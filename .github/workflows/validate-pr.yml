@@ -31,3 +31,14 @@ jobs:
             exit 1
           fi
           grep -q '/universia/assets/' dist/index.html
+      - name: Build Vercel Preview assets
+        run: VERCEL=1 npm run build
+      - name: Verify Vercel root paths
+        run: |
+          test -s dist/index.html
+          test -d dist/assets
+          grep -qE '(src|href)="/assets/' dist/index.html
+          if grep -q '/universia/assets/' dist/index.html; then
+            echo "Unexpected GitHub Pages path in Vercel build" >&2
+            exit 1
+          fi
