@@ -191,6 +191,198 @@ export const libraryEntries=[
     "deliverable": "Déroulé de formation, activité et grille d’autoévaluation.",
     "caution": "Éviter de présenter un outil commercial comme institutionnellement approuvé.",
     "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "plan-td-projet",
+    "category": "Enseignement",
+    "title": "Faire travailler en projet interdisciplinaire",
+    "audience": "Enseignants",
+    "level": "Intermédiaire",
+    "summary": "Organiser un projet collectif qui combine savoirs disciplinaires, autonomie et documentation des décisions.",
+    "steps": [
+      "Définir une question authentique et un livrable commun",
+      "Répartir tâches, jalons et responsabilités d’équipe",
+      "Préparer une soutenance individuelle et une grille de contributions"
+    ],
+    "deliverable": "Cahier des charges, calendrier, grille individuelle et collective.",
+    "caution": "Distinguer compétence personnelle et production collective.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "retroaction",
+    "category": "Évaluation",
+    "title": "Construire un feedback formatif utile",
+    "audience": "Enseignants",
+    "level": "Débutant",
+    "summary": "Transformer des constats d’évaluation en conseils précis et vérifiables.",
+    "steps": [
+      "Relier chaque commentaire à un critère observable",
+      "Fournir un exemple de correction sans inventer de note",
+      "Demander une nouvelle tentative et mesurer le progrès"
+    ],
+    "deliverable": "Grille de rétroaction et consigne de révision.",
+    "caution": "Ne pas transmettre de copies identifiables à des services externes.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "oral-ia",
+    "category": "Évaluation",
+    "title": "Préparer une soutenance avec usage déclaré d’IA",
+    "audience": "Enseignants",
+    "level": "Avancé",
+    "summary": "Évaluer la compréhension du travail même lorsque des outils numériques ont été utilisés.",
+    "steps": [
+      "Prévoir des questions sur les choix et alternatives",
+      "Demander la justification des sources et des résultats",
+      "Expliciter les règles de présentation et de transparence"
+    ],
+    "deliverable": "Trame de soutenance et critères de maîtrise personnelle.",
+    "caution": "La suspicion d’usage d’IA n’est pas une preuve de fraude.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "protocole-entretien",
+    "category": "Recherche",
+    "title": "Concevoir un guide d’entretien de recherche",
+    "audience": "Doctorants",
+    "level": "Intermédiaire",
+    "summary": "Préparer une collecte qualitative respectant la question étudiée et les personnes participantes.",
+    "steps": [
+      "Énoncer les dimensions théoriques et les objectifs",
+      "Formuler des questions ouvertes et des relances neutres",
+      "Préparer consentement, anonymisation et journal de terrain"
+    ],
+    "deliverable": "Guide d’entretien pilotable et fiche d’information.",
+    "caution": "Adapter aux autorisations éthiques et aux conditions locales.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "journal-codage",
+    "category": "Recherche",
+    "title": "Documenter un codage qualitatif",
+    "audience": "Chercheurs",
+    "level": "Avancé",
+    "summary": "Rendre traçables les catégories et les désaccords dans une analyse de corpus.",
+    "steps": [
+      "Définir un codebook avec critères d’inclusion",
+      "Tester la grille sur des extraits autorisés",
+      "Consigner les changements, désaccords et contre-exemples"
+    ],
+    "deliverable": "Codebook daté et tableau de décisions de codage.",
+    "caution": "Les catégories suggérées par l’IA doivent être discutées et validées.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "reproductibilite",
+    "category": "Recherche",
+    "title": "Préparer une analyse reproductible",
+    "audience": "Doctorants",
+    "level": "Avancé",
+    "summary": "Structurer fichiers, méthodes et paramètres pour permettre un contrôle méthodologique.",
+    "steps": [
+      "Documenter les variables et les transformations",
+      "Tracer les versions du code et des données autorisées",
+      "Lister les tests et limites de la reproduction"
+    ],
+    "deliverable": "Plan de reproductibilité et registre des paramètres.",
+    "caution": "Ne pas diffuser des jeux de données confidentiels sans autorisation.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "figure-scientifique",
+    "category": "Publication",
+    "title": "Vérifier tableaux et figures scientifiques",
+    "audience": "Chercheurs",
+    "level": "Intermédiaire",
+    "summary": "Contrôler la cohérence entre données, visualisations, légendes et interprétation.",
+    "steps": [
+      "Associer chaque figure à la source des données",
+      "Contrôler unités, échelles et transformations",
+      "Rédiger les limites et éviter les inférences injustifiées"
+    ],
+    "deliverable": "Tableau de contrôle des figures et légendes complètes.",
+    "caution": "Ne pas générer des figures qui imitent des observations inexistantes.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "choix-revue",
+    "category": "Publication",
+    "title": "Évaluer une revue avant soumission",
+    "audience": "Doctorants",
+    "level": "Débutant",
+    "summary": "Comparer la pertinence d’une revue à partir de ses pratiques éditoriales vérifiables.",
+    "steps": [
+      "Vérifier périmètre scientifique et consignes aux auteurs",
+      "Examiner comité, processus d’évaluation et transparence des frais",
+      "Contrôler les affirmations d’indexation auprès des bases concernées"
+    ],
+    "deliverable": "Grille de décision argumentée pour la revue visée.",
+    "caution": "Aucun score automatique ne remplace une vérification documentaire.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "gestion-bibliographie",
+    "category": "Publication",
+    "title": "Organiser sa bibliographie de travail",
+    "audience": "Doctorants",
+    "level": "Débutant",
+    "summary": "Structurer les métadonnées et les notes de lecture avant rédaction.",
+    "steps": [
+      "Importer les notices depuis des sources reconnues",
+      "Dédupliquer auteurs, titres et identifiants",
+      "Associer chaque affirmation à une lecture réellement effectuée"
+    ],
+    "deliverable": "Bibliographie contrôlée avec notes de pertinence.",
+    "caution": "Ne pas confondre import automatique et vérification des références.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "strategie-accompagnement",
+    "category": "Formation",
+    "title": "Créer un parcours d’autoformation à l’IA",
+    "audience": "Responsables",
+    "level": "Intermédiaire",
+    "summary": "Planifier une montée en compétence adaptée aux personnels universitaires.",
+    "steps": [
+      "Identifier besoins et tâches par métier",
+      "Choisir des ateliers basés sur des problèmes réels",
+      "Prévoir évaluation pratique et révision des contenus"
+    ],
+    "deliverable": "Programme en trois niveaux et grille de suivi.",
+    "caution": "Ne pas présenter une autoévaluation comme une certification officielle.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "accessibilite-cours",
+    "category": "Formation",
+    "title": "Adapter un support de cours accessible",
+    "audience": "Enseignants",
+    "level": "Débutant",
+    "summary": "Améliorer la compréhension et l’accès aux documents universitaires.",
+    "steps": [
+      "Structurer les titres et la langue du document",
+      "Prévoir descriptions des visuels et alternatives",
+      "Tester navigation clavier et restitution par lecteur d’écran"
+    ],
+    "deliverable": "Liste de contrôle d’accessibilité d’un support.",
+    "caution": "La génération automatique de textes alternatifs exige une validation humaine.",
+    "editorialStatus": "Exemple méthodologique à adapter"
+  },
+  {
+    "id": "charte-laboratoire",
+    "category": "Éthique",
+    "title": "Rédiger un cadre d’usage IA pour laboratoire",
+    "audience": "Responsables",
+    "level": "Avancé",
+    "summary": "Identifier les responsabilités scientifiques, documentaires et techniques.",
+    "steps": [
+      "Cartographier les cas d’usage permis ou sensibles",
+      "Définir protection des données et déclaration des usages",
+      "Prévoir arbitrage, formation et mise à jour régulière"
+    ],
+    "deliverable": "Projet de charte soumis aux instances du laboratoire.",
+    "caution": "Une fiche pratique ne tient pas lieu de validation juridique institutionnelle.",
+    "editorialStatus": "Exemple méthodologique à adapter"
   }
 ];
 export const libraryCategories=['Toutes',...new Set(libraryEntries.map(e=>e.category))];
