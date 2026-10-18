@@ -71,4 +71,15 @@ La promptothèque V1 de 24 cas est conservée et enrichie de **15 scénarios dis
 - `npm run test` : tests V1.2 + contrôles structuraux V1.
 - `npm run build` : construction Vite ; dépend d'une installation npm réussie.
 
-Le chemin `base: '/universia/'` de `vite.config.js` vise **uniquement** GitHub Pages pour `Bouguen/universia`. Aucun fichier de SCOLAR·IA ni configuration partagée n'est modifié. La publication sur `main` doit attendre l'examen de la Pull Request. Le CMS, la base de données, l'authentification, les certificats vérifiables et l'intégration à un modèle IA ne font pas partie de cette extension.
+Le chemin de base Vite s'adapte au déploiement : `/universia/` pour GitHub Pages et `/` lorsque `VERCEL=1` sur Vercel. Aucun fichier de SCOLAR·IA ni configuration partagée n'est modifié. La publication sur `main` doit attendre l'examen de la Pull Request. Le CMS, la base de données, l'authentification, les certificats vérifiables et l'intégration à un modèle IA ne font pas partie de cette extension.
+
+
+### Preview Vercel pour la PR #1
+
+1. Dans Vercel, choisir **Add New → Project**, puis importer `Bouguen/universia` dans un **nouveau projet distinct** (ne pas utiliser SCOLAR·IA).
+2. Vérifier Framework Preset : **Vite**, Build Command : `npm run build`, Output Directory : `dist`.
+3. La branche de production du projet Vercel peut rester `main` ; la publication officielle du site reste sur GitHub Pages.
+4. Ouvrir la Pull Request #1 ou sélectionner la branche `feature/universia-v1.2` dans **Deployments**, puis consulter son URL **Preview** après un déploiement réussi. Au besoin, déclencher un redéploiement ou pousser un nouveau commit sur la branche.
+5. Vérifier ordinateur, smartphone, navigation, générateurs et accessibilité avant toute fusion.
+
+Sur Vercel, la variable système `VERCEL=1` active les chemins absolus à la racine. L'action GitHub Actions valide aussi ce second mode de build. Aucune URL de Preview n'est présumée tant qu'elle n'est pas réellement créée.
