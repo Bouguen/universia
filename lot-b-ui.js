@@ -1,10 +1,7 @@
+import {filterLibrary} from './lot-b-core.js';
 import {libraryEntries,libraryCategories} from './lot-b-data.js';
 import './lot-b.css';
 const safe=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function filterLibrary({query='',category='Toutes',audience='Tous publics'}={}){
- const term=query.trim().toLocaleLowerCase('fr');
- return libraryEntries.filter(e=>(category==='Toutes'||e.category===category)&&(audience==='Tous publics'||e.audience===audience||e.audience==='Tous publics')&&(!term||[e.title,e.category,e.summary,e.audience,...e.steps].join(' ').toLocaleLowerCase('fr').includes(term)));
-}
 export function mountLotB(){const root=document.createElement('section');root.id='bibliotheque';root.className='lotb-section';root.innerHTML=`<div class="shell"><div class="sectiontop"><div><p class="kicker">NOUVEAU · LOT B</p><h2>Bibliothèque universitaire,<br><em>pratique et structurée.</em></h2></div><p>Douze fiches méthodologiques complètes, avec étapes, livrables et points de vigilance. Contenus originaux à adapter à votre contexte, sans certification ni validation institutionnelle.</p></div><div class="lotb-filter"><label>Rechercher une fiche<input id="lotb-search" type="search" placeholder="Ex. revue, TD, références…"></label><label>Thématique<select id="lotb-category">${libraryCategories.map(x=>`<option>${safe(x)}</option>`).join('')}</select></label><label>Public<select id="lotb-audience"><option>Tous publics</option>${[...new Set(libraryEntries.map(x=>x.audience))].filter(x=>x!=='Tous publics').map(x=>`<option>${safe(x)}</option>`).join('')}</select></label></div><p id="lotb-count" class="lotb-count" role="status"></p><div id="lotb-results" class="lotb-grid"></div><p class="lotb-disclaimer">Ces fiches sont des supports pratiques originaux. Les obligations réglementaires, les politiques locales et les informations scientifiques externes doivent être vérifiées avant application.</p></div>`;
  const hero=document.querySelector('#accueil');if(!hero)return;hero.after(root);
  const search=root.querySelector('#lotb-search'),cat=root.querySelector('#lotb-category'),aud=root.querySelector('#lotb-audience'),count=root.querySelector('#lotb-count'),list=root.querySelector('#lotb-results');
