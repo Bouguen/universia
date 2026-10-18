@@ -10,7 +10,7 @@ test('les ancres du menu sont uniques et correspondent à des sections existante
     const id=anchor.slice(1);
     assert.match(id,/^[a-z][a-z0-9-]*$/);
     const sources=['src.js','v1-ui.js','v11-ui.js','v12-ui.js','lot-b-ui.js'].map(path=>readFileSync(path,'utf8'));
-    assert.ok(sources.some(src=>src.includes('id="'+id+'"')), 'Section manquante : '+id);
+    assert.ok(sources.some(src=>src.includes('id="'+id+'"')||src.includes("root.id='"+id+"'")), 'Section manquante : '+id);
   }
 });
 test('le menu propose un bouton accessible associé aux liens',()=>{
