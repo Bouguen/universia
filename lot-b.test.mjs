@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {libraryEntries,libraryCategories} from './lot-b-data.js';
 import {filterLibrary} from './lot-b-core.js';
-test('vingt-quatre fiches originales, identifiants distincts',()=>{assert.equal(libraryEntries.length,24);assert.equal(new Set(libraryEntries.map(x=>x.id)).size,12);});
+test('vingt-quatre fiches originales, identifiants distincts',()=>{assert.equal(libraryEntries.length,24);assert.equal(new Set(libraryEntries.map(x=>x.id)).size,24);});
 test('fiches complètes et champ éditorial explicite',()=>{for(const e of libraryEntries){assert.ok(e.title&&e.category&&e.audience&&e.summary&&e.deliverable&&e.caution);assert.ok(e.steps.length>=3);assert.match(e.editorialStatus,/adapter/);}});
 test('catégories cohérentes',()=>{for(const e of libraryEntries)assert.ok(libraryCategories.includes(e.category));});
 test('recherche insensible à la casse et aux accents usuels',()=>{assert.ok(filterLibrary({query:'REVUE'}).length>0);assert.ok(filterLibrary({category:'Publication'}).every(x=>x.category==='Publication'));assert.equal(filterLibrary({query:'nonexistant987654'}).length,0);});
