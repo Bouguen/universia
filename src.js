@@ -1,3 +1,4 @@
+import {mountLotB} from './lot-b-ui.js';
 import {navigationMarkup,initNavigation} from './navigation.js';
 import {mountV12} from './v12-ui.js';
 import {mountV11} from './v11-ui.js';
@@ -16,6 +17,7 @@ function attach(){document.querySelectorAll('[data-group]').forEach(a=>a.addEven
 function syncChips(){document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('on',b.dataset.filter===selectedGroup))}
 render();
 initNavigation(document);
+mountLotB();
 mountV1();
 const v11Root=document.createElement("div");v11Root.id="universia-v11";document.querySelector("#univ-v1")?.after(v11Root);mountV11();
 
