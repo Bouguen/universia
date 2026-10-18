@@ -42,6 +42,8 @@ jobs:
             echo "Unexpected GitHub Pages path in Vercel build" >&2
             exit 1
           fi
+      - name: Install browser test driver
+        run: npm install --no-save --no-package-lock playwright-core
       - name: Browser smoke test (Vercel-style build)
         run: |
           npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/universia-preview.log 2>&1 &
