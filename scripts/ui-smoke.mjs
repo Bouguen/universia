@@ -21,6 +21,14 @@ try{
   if(name==='mobile'){
     await page.locator('#menu-toggle').click();
     assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'),'true');
+    await page.screenshot({path:'screenshots/universia-mobile-menu.png',fullPage:false});
+    const menu=await page.locator('#site-nav').boundingBox();
+    assert.ok(menu,name+': le menu devrait être visible');
+    assert.ok(menu.height<560,name+': menu trop haut '+menu.height);
+    assert.ok(menu.width<=width,name+': menu déborde horizontalement');
+    const first=await page.locator('#site-nav a').nth(0).boundingBox();
+    const second=await page.locator('#site-nav a').nth(1).boundingBox();
+    assert.ok(first&&second&&second.y-first.y<80,name+': espacement excessif entre les liens');
     await page.keyboard.press('Escape');
     assert.equal(await page.locator('#menu-toggle').getAttribute('aria-expanded'),'false');
   }
