@@ -5,3 +5,21 @@
 /* Les sept liens de navigation ne doivent pas écraser l'identité du site. */
 @media(max-width:1100px){.links{display:none}}
 @media(min-width:1101px){.links{gap:clamp(9px,1.1vw,18px);font-size:12px}}
+
+/* Lot A: navigation accessible, responsive et cibles tactiles. */
+.nav{position:relative}
+.menu-toggle{display:none;align-items:center;justify-content:center;gap:10px;border:1px solid #bad0d5;border-radius:10px;padding:11px 14px;background:#fff;color:#18384a;font-weight:800;min-height:44px}
+.menu-toggle-icon{font-size:1.1rem;line-height:1}
+.links .nav-mobile-only{display:none}
+@media(max-width:1100px){
+  .menu-toggle{display:inline-flex;margin-left:auto}
+  .links{display:none;position:absolute;top:100%;left:18px;right:18px;background:#fff;border:1px solid #d9e5e8;border-radius:13px;box-shadow:0 18px 35px #17344824;padding:12px;flex-direction:column;gap:0;max-height:calc(100dvh - 100px);overflow-y:auto;z-index:40}
+  .links.is-open{display:flex}
+  .links a{display:block;padding:12px 14px;border-radius:9px;min-height:44px}
+  .links a:hover,.links a:focus-visible{background:#edf7f5}
+  .links .nav-mobile-only{display:block}
+}
+@media(max-width:700px){.navcta{display:none}.nav{gap:8px}.brand{font-size:17px}.brand small{letter-spacing:1.4px}.menu-toggle{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+.u12-workflow,.u12-course-tab,.u12-link,.u12-outline,.u12-quiz label{min-height:44px}
+.u12-lesson h3:focus{outline:3px solid #117b70;outline-offset:5px;border-radius:4px}
