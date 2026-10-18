@@ -55,3 +55,31 @@ Le projet ne contient aucun lien d'intégration, secret, configuration de domain
 Six modules d'atelier supplémentaires sont proposés dans `v11-data.js` et rendus par `v11-ui.js` : enseignement, évaluation, recherche documentaire, publication, encadrement doctoral et formation des collègues. Chaque module inclut objectifs, quatre exercices avec cases de suivi, livrable, critère d'autoévaluation, avertissement et export TXT. Suivi dans `localStorage`, non synchronisé.
 
 Le fichier `EDITORIAL-AND-DEPLOYMENT.md` spécifie les quatre collections et le workflow Payload à implémenter. Le CMS et PostgreSQL ne sont **pas installés** dans cette version statique. Toute Preview Vercel et tout dépôt GitHub doivent être créés indépendamment.
+
+## Extension V1.2 — studio académique et formations (18 octobre 2026)
+
+La V1.2 ajoute **quatre workflows guidés** (conception de cours, évaluation, revue de littérature, préparation d'article), adaptés à **six disciplines** avec exemples explicites et contraintes d'intégrité. Les champs sont préremplissables par un **exemple fictif** ; chaque changement actualise le prompt. Les prompts peuvent être copiés ou exportés en TXT. Aucune requête vers un fournisseur IA n'est effectuée.
+
+La promptothèque V1 de 24 cas est conservée et enrichie de **15 scénarios disciplinaires** consultables par recherche et filtres, avec transfert direct vers le nouveau studio. Quatre parcours approfondis proposent **12 leçons**, chacune comportant un cas, une question et un corrigé explicatif. Seules les réponses correctes des autoévaluations sont enregistrées localement ; la progression n'est ni vérifiée ni certifiante.
+
+### Développement et vérification
+
+- `v12-data.js` : disciplines, workflows, cas et cours approfondis.
+- `v12-core.js` : composition des prompts et validation pure, sans accès au DOM.
+- `v12-ui.js`, `v12.css` : interface responsive et interactive.
+- `v12.test.mjs` : six suites de tests sans dépendance supplémentaire.
+- `npm run test` : tests V1.2 + contrôles structuraux V1.
+- `npm run build` : construction Vite ; dépend d'une installation npm réussie.
+
+Le chemin de base Vite s'adapte au déploiement : `/universia/` pour GitHub Pages et `/` lorsque `VERCEL=1` sur Vercel. Aucun fichier de SCOLAR·IA ni configuration partagée n'est modifié. La publication sur `main` doit attendre l'examen de la Pull Request. Le CMS, la base de données, l'authentification, les certificats vérifiables et l'intégration à un modèle IA ne font pas partie de cette extension.
+
+
+### Preview Vercel pour la PR #1
+
+1. Dans Vercel, choisir **Add New → Project**, puis importer `Bouguen/universia` dans un **nouveau projet distinct** (ne pas utiliser SCOLAR·IA).
+2. Vérifier Framework Preset : **Vite**, Build Command : `npm run build`, Output Directory : `dist`.
+3. La branche de production du projet Vercel peut rester `main` ; la publication officielle du site reste sur GitHub Pages.
+4. Ouvrir la Pull Request #1 ou sélectionner la branche `feature/universia-v1.2` dans **Deployments**, puis consulter son URL **Preview** après un déploiement réussi. Au besoin, déclencher un redéploiement ou pousser un nouveau commit sur la branche.
+5. Vérifier ordinateur, smartphone, navigation, générateurs et accessibilité avant toute fusion.
+
+Sur Vercel, la variable système `VERCEL=1` active les chemins absolus à la racine. L'action GitHub Actions valide aussi ce second mode de build. Aucune URL de Preview n'est présumée tant qu'elle n'est pas réellement créée.

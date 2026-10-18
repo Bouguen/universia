@@ -1,0 +1,62 @@
+/* UNIVERS·IA V1.2 : styles isolés, sans modification des sections précédentes. */
+.u12-section{scroll-margin-top:100px}.u12-layout{display:grid;grid-template-columns:.8fr 1.16fr 1.18fr;gap:18px;align-items:start}.u12-panel{background:#fff;border:1px solid #dbe6e9;border-radius:16px;padding:22px;box-shadow:0 5px 28px #122b3810}.u12-panel h3{margin:0 0 18px;font-size:1.14rem;color:#18384a}.u12-workflows{display:grid;gap:9px}.u12-workflow{display:grid;grid-template-columns:30px 1fr;gap:3px 9px;align-items:center;text-align:left;background:#f8fafb;border:1px solid #dce5e9;border-radius:10px;padding:12px;color:#183748}.u12-workflow span{font-size:22px;grid-row:span 2;color:#127a73}.u12-workflow strong{font-size:.94rem}.u12-workflow small{color:#697c85}.u12-workflow.selected{border:2px solid #117b70;background:#edfaf5}.u12-panel label,.u12-case-filter label{display:block;font-size:.85rem;font-weight:700;margin:11px 0 6px}.u12-panel input,.u12-panel select,.u12-panel textarea,.u12-case-filter input,.u12-case-filter select{display:block;width:100%;padding:11px 12px;border:1px solid #c7d6db;border-radius:8px;background:#fff;color:#193749}.u12-fields{margin:14px 0}.u12-hint{font-size:.82rem;color:#496777;line-height:1.5}.u12-panel-result{background:#f5faf9}.u12-panel-result pre{max-height:480px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;background:#122f40;color:#f1fffd;border-radius:11px;padding:18px;font-size:.83rem;line-height:1.65}.u12-buttons{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}.u12-outline{border:1px solid #bad0d5;background:#fff;color:#154b52;border-radius:9px;padding:10px 14px;font-weight:700;font-size:.87rem}.u12-outline:disabled{opacity:.45;cursor:not-allowed}.u12-small{color:#526f7a;line-height:1.6;font-size:.79rem}.u12-case-filter{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:20px}.u12-case-filter label{margin:0 0 9px}.u12-case-filter input{flex:1 1 300px}.u12-case-filter select{flex:0 1 220px}.u12-case-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.u12-case{padding:22px;border:1px solid #d7e4e6;border-radius:12px;background:#fff;display:flex;flex-direction:column;gap:8px}.u12-case h4{font-size:1.08rem;margin:4px 0}.u12-case p{margin:0;color:#4e6773;line-height:1.55}.u12-case .u12-small{margin-top:auto}.u12-meta{font-size:.73rem;font-weight:700;letter-spacing:.7px;text-transform:uppercase;color:#0c7168}.u12-link{align-self:start;background:none;border:none;padding:10px 0;color:#086a62;font-weight:800;text-align:left}.u12-training{display:grid;grid-template-columns:.85fr 2fr;gap:20px;align-items:start}.u12-course-tabs{display:grid;gap:11px}.u12-course-tab{padding:16px;border:1px solid #cbdce0;border-radius:11px;background:#fff;text-align:left;display:grid;gap:6px;color:#16384b}.u12-course-tab.on{border:2px solid #10796f;background:#eff9f6}.u12-course-tab small{color:#657e89}.u12-lesson{border:1px solid #d6e3e7;border-radius:14px;background:#f8fbfb;padding:24px;line-height:1.65}.u12-lesson h3{font-size:1.5rem;margin:10px 0}.u12-situation{background:#e8f6f2;border-left:3px solid #2f9786;padding:14px;margin:18px 0}.u12-situation p{margin:8px 0 0}.u12-quiz{border:0;padding:0;margin-top:20px}.u12-quiz legend{font-weight:800;margin-bottom:10px}.u12-quiz label{display:flex;gap:10px;padding:9px;margin:6px 0;background:white;border-radius:8px;border:1px solid #dae3e6;cursor:pointer}.u12-quiz input{margin-top:5px;accent-color:#0c7369}.u12-feedback{min-height:22px;color:#176959;font-weight:700}.u12-section .sectiontop{margin-bottom:32px}#cas-academiques,#formations-approfondies{scroll-margin-top:95px}
+@media(max-width:1100px){.u12-layout{grid-template-columns:1fr 1fr}.u12-panel-result{grid-column:1/-1}.u12-case-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.u12-layout,.u12-training,.u12-case-grid{grid-template-columns:1fr}.u12-panel-result{grid-column:auto}.u12-panel,.u12-lesson{padding:17px}.u12-case-filter{display:grid}.u12-case-filter input,.u12-case-filter select{width:100%}}
+@media(prefers-reduced-motion:reduce){#studio,#cas-academiques,#formations-approfondies{scroll-behavior:auto}}
+/* Les sept liens de navigation ne doivent pas écraser l'identité du site. */
+@media(max-width:1100px){.links{display:none}}
+@media(min-width:1101px){.links{gap:clamp(9px,1.1vw,18px);font-size:12px}}
+
+/* Lot A: navigation accessible, responsive et cibles tactiles. */
+.nav{position:relative}
+.menu-toggle{display:none;align-items:center;justify-content:center;gap:10px;border:1px solid #bad0d5;border-radius:10px;padding:11px 14px;background:#fff;color:#18384a;font-weight:800;min-height:44px}
+.menu-toggle-icon{font-size:1.1rem;line-height:1}
+.links .nav-mobile-only{display:none}
+@media(max-width:1100px){
+  .menu-toggle{display:inline-flex;margin-left:auto}
+  /* Panneau ancré au bouton, plutôt qu'un volet occupant toute la largeur/hauteur. */
+  .links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    right:18px;
+    left:auto;
+    width:min(560px,calc(100vw - 36px));
+    height:auto;
+    min-height:0;
+    max-height:min(68dvh,540px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    border:1px solid #d9e5e8;
+    border-radius:13px;
+    box-shadow:0 18px 35px #17344824;
+    background:#fff;
+    padding:12px;
+    z-index:40;
+    gap:4px;
+    align-content:start;
+    justify-content:stretch;
+  }
+  .links.is-open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .links a{
+    display:flex;
+    align-items:center;
+    box-sizing:border-box;
+    min-width:0;
+    min-height:44px;
+    height:auto;
+    flex:none;
+    padding:10px 12px;
+    border-radius:9px;
+    line-height:1.4;
+  }
+  .links a:hover,.links a:focus-visible{background:#edf7f5}
+  .links .nav-mobile-only{display:flex}
+}
+@media(max-width:620px){
+  .links.is-open{grid-template-columns:minmax(0,1fr)}
+  .links{right:0;width:min(360px,calc(100vw - 32px));max-height:min(70dvh,540px)}
+}
+@media(max-width:700px){.navcta{display:none}.nav{gap:8px}.brand{font-size:17px}.brand small{letter-spacing:1.4px}.menu-toggle{padding:10px 12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
+.u12-workflow,.u12-course-tab,.u12-link,.u12-outline,.u12-quiz label{min-height:44px}
+.u12-lesson h3:focus{outline:3px solid #117b70;outline-offset:5px;border-radius:4px}
