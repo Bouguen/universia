@@ -46,7 +46,7 @@ jobs:
         run: npm install --no-save --no-package-lock playwright-core
       - name: Browser smoke test (Vercel-style build)
         run: |
-          npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/universia-preview.log 2>&1 &
+          VERCEL=1 npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/universia-preview.log 2>&1 &
           for i in {1..30}; do
             curl -fsS http://127.0.0.1:4173/ >/dev/null && break
             sleep 1
