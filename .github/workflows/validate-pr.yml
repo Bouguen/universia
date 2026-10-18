@@ -1,0 +1,33 @@
+name: Validate UNIVERS-IA pull requests
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Run automated tests
+        run: npm test
+      - name: Build GitHub Pages assets
+        run: npm run build
+      - name: Verify output and base path
+        run: |
+          test -s dist/index.html
+          test -d dist/assets
+          if grep -qE '(src|href)="/(src\\.js|assets/)' dist/index.html; then
+            echo "Incorrect root-relative asset path" >&2
+            exit 1
+          fi
+          grep -q '/universia/assets/' dist/index.html
