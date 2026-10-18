@@ -15,7 +15,7 @@ try{
   const main=await page.locator('#main').count();
   console.log(name, 'main',main,'errors',errors,'title',await page.title());
   assert.equal(main,1,name+': contenu principal absent ; erreurs: '+errors.join(' | '));
-  for(const selector of ['#studio','#menu-toggle','#site-nav','#u12-course-tabs','#u12-result']){
+  for(const selector of ['#studio','#bibliotheque','#lotb-search','#lotb-results','#menu-toggle','#site-nav','#u12-course-tabs','#u12-result']){
     assert.equal(await page.locator(selector).count(),1,name+': élément manquant '+selector);
   }
   if(name==='mobile'){
