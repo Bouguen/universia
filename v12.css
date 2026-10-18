@@ -13,11 +13,48 @@
 .links .nav-mobile-only{display:none}
 @media(max-width:1100px){
   .menu-toggle{display:inline-flex;margin-left:auto}
-  .links{display:none;position:absolute;top:100%;left:18px;right:18px;background:#fff;border:1px solid #d9e5e8;border-radius:13px;box-shadow:0 18px 35px #17344824;padding:12px;flex-direction:column;gap:0;max-height:calc(100dvh - 100px);overflow-y:auto;z-index:40}
-  .links.is-open{display:flex}
-  .links a{display:block;padding:12px 14px;border-radius:9px;min-height:44px}
+  /* Panneau ancré au bouton, plutôt qu'un volet occupant toute la largeur/hauteur. */
+  .links{
+    display:none;
+    position:absolute;
+    top:calc(100% + 8px);
+    right:18px;
+    left:auto;
+    width:min(560px,calc(100vw - 36px));
+    height:auto;
+    min-height:0;
+    max-height:min(68dvh,540px);
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    border:1px solid #d9e5e8;
+    border-radius:13px;
+    box-shadow:0 18px 35px #17344824;
+    background:#fff;
+    padding:12px;
+    z-index:40;
+    gap:4px;
+    align-content:start;
+    justify-content:stretch;
+  }
+  .links.is-open{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .links a{
+    display:flex;
+    align-items:center;
+    box-sizing:border-box;
+    min-width:0;
+    min-height:44px;
+    height:auto;
+    flex:none;
+    padding:10px 12px;
+    border-radius:9px;
+    line-height:1.4;
+  }
   .links a:hover,.links a:focus-visible{background:#edf7f5}
-  .links .nav-mobile-only{display:block}
+  .links .nav-mobile-only{display:flex}
+}
+@media(max-width:620px){
+  .links.is-open{grid-template-columns:minmax(0,1fr)}
+  .links{right:0;width:min(360px,calc(100vw - 32px));max-height:min(70dvh,540px)}
 }
 @media(max-width:700px){.navcta{display:none}.nav{gap:8px}.brand{font-size:17px}.brand small{letter-spacing:1.4px}.menu-toggle{padding:10px 12px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
