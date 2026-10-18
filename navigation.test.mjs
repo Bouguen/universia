@@ -50,5 +50,5 @@ test('accessibilité : focus, annonces limitées et mouvements réduits',()=>{
   assert.match(ui,/h3 tabindex="-1"/);
   assert.match(ui,/sel\('#u12-lesson h3'\)\?\.focus\(\)/);
   assert.match(css,/prefers-reduced-motion:reduce/);
-  assert.match(css,/\.links\.is-open\{display:flex\}/);
+  assert.match(css,/\.links\.is-open\{display:grid;/);
 });
