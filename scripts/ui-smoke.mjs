@@ -72,6 +72,7 @@ try{
    assert.equal(await page.locator('.portal-result').count(),12,'C1 : douze résultats par page');
    await page.locator('#portal-pages [data-page="next"]').click();
    assert.ok((await page.locator('#portal-count').textContent()).includes('Page 2'),'C1 : pagination');
+   await page.locator('#portal-type').selectOption('Bibliothèque');
    await page.locator('#portal-query').fill('Vérifier des références bibliographiques');
    const result=page.locator('.portal-result').filter({hasText:'Vérifier des références bibliographiques'}).first();
    assert.ok(await result.count()>0,'C1 : fiche exacte repérable');
