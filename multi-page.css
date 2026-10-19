@@ -13,3 +13,73 @@ body[data-page="accueil"] .constellation-section{padding-top:45px;padding-bottom
 body:not([data-page="accueil"]) #main{min-height:75vh}
 body:not([data-page="accueil"]) #main>.section:first-of-type{padding-top:45px}
 @media(max-width:650px){.mp-intro{padding:25px 0}.mp-intro h1{font-size:34px}body[data-page="accueil"] .hero-grid{min-height:420px}body[data-page="accueil"] #parcours{padding-top:38px}.head .links{gap:5px!important}}
+
+
+/* Stabilise l'entête : une bannière sans hauteur fixe ni recouvrement du héros. 
+   Sélecteurs précis pour rester prioritaires sur les anciens styles V1/V1.2. */
+body .head{
+  height:auto!important;
+  min-height:0!important;
+  position:sticky;
+  top:0;
+  z-index:30;
+  box-shadow:0 1px 0 #dce9e7;
+}
+body .head .nav.shell{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr);
+  gap:8px;
+  height:auto!important;
+  min-height:0!important;
+  align-items:center;
+  justify-items:start;
+  padding:12px 28px 10px;
+  max-width:1320px;
+}
+body .head .nav .brand{
+  margin:0!important;
+  min-width:0;
+  line-height:1.1;
+  font-size:20px;
+}
+body .head .nav .links{
+  display:flex!important;
+  position:static!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  align-content:center!important;
+  flex-direction:row!important;
+  flex-wrap:wrap!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  padding:4px 0 0!important;
+  border:0!important;
+  border-top:1px solid #e7eeee!important;
+  box-shadow:none!important;
+  background:transparent!important;
+  gap:3px 6px!important;
+  margin:0!important;
+}
+body .head .nav .links a{
+  display:inline-flex!important;
+  align-items:center!important;
+  flex:none!important;
+  min-height:39px!important;
+  padding:7px 11px!important;
+  white-space:normal!important;
+  font-size:clamp(11px,1.03vw,13px)!important;
+  line-height:1.25!important;
+  border-radius:7px!important;
+}
+body .head .nav .navcta,body .head .nav .menu-toggle{display:none!important}
+@media(max-width:650px){
+  body .head{position:relative}
+  body .head .nav.shell{padding:9px 17px 8px;gap:7px}
+  body .head .nav .brand{font-size:18px}
+  body .head .nav .links{gap:3px!important}
+  body .head .nav .links a{min-height:38px!important;font-size:12px!important;padding:7px 9px!important}
+  html{scroll-padding-top:15px}
+}
