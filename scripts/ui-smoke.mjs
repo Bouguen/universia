@@ -50,6 +50,11 @@ try{
   }
   if(name==='bibliotheque'){
    assert.equal(await page.locator('.lotb-card').count(),24);
+   assert.equal(await page.locator('.lotb-card .deep-guide').count(),24,'C2 : 24 ateliers rendus');
+   await page.locator('.lotb-card').first().locator('summary').click();
+   assert.ok(await page.locator('.lotb-card').first().locator('.deep-guide-prompt textarea').isVisible(),'C2 : prompt consultable');
+   assert.equal(await page.locator('.lotb-card').first().locator('.deep-guide-checklist li').count(),3,'C2 : grille de contrôle');
+
    assert.equal((await page.locator('.mp-intro h1').textContent()).trim(),'Bibliothèque universitaire','Un seul titre principal de bibliothèque');
    assert.ok(!(await page.locator('#bibliotheque .sectiontop h2').textContent()).includes('Bibliothèque'),'Ne pas répéter Bibliothèque dans la section');
    const headings=(await page.locator('.mp-intro').innerText())+' '+(await page.locator('#bibliotheque .sectiontop').innerText());
@@ -64,6 +69,9 @@ try{
   if(name==='ressources'){
    await page.locator('.resourcegrid .res').first().locator('summary').click();
    assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').isVisible());
+   assert.equal(await page.locator('.resourcegrid .resource-application').count(),14,'C2 : 14 mini-cas');
+   assert.ok((await page.locator('.resourcegrid .res').first().locator('.secondary-resource').getAttribute('href')).includes('fiche='),'C2 : lien vers guide précis');
+
   }
   if(name==='recherche'){
    await page.locator('#portal-query').fill('revue');
