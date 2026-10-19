@@ -70,7 +70,7 @@ try{
    assert.equal(await page.locator('#c3-tool-guide').count(),1,'C3 : guide générateur');
    assert.ok((await page.locator('#c3-tool-guide').innerText()).includes('Situation de départ'));
    await page.locator('#v1-tool').selectOption('review');
-   assert.ok((await page.locator('#c3-tool-guide').innerText()).includes('revue exploratoire'),'C3 : exemple adapté au générateur sélectionné');
+   assert.ok((await page.locator('#c3-tool-guide').innerText()).toLocaleLowerCase('fr').includes('revue exploratoire'),'C3 : exemple adapté au générateur sélectionné');
   }
   if(name==='formations'){
    assert.equal(await page.locator('.c3-training-card').count(),6,'C3 : six mises en pratique');
