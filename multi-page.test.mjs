@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync,existsSync} from 'node:fs';
 import {sections,pageUrl,currentPage,destinationForHash} from './multi-routes.js';
-test('neuf pages distinctes, sans doublons et fichiers réels',()=>{
- assert.equal(sections.length,9);
+test('dix pages distinctes, sans doublons et fichiers réels',()=>{
+ assert.equal(sections.length,10);
  assert.equal(new Set(sections.map(x=>x.id)).size,sections.length);
  assert.equal(new Set(sections.map(x=>x.slug)).size,sections.length);
  for(const page of sections){assert.ok(page.name&&page.description);const path=page.slug?page.slug+'/index.html':'index.html';assert.ok(existsSync(path),path);}
@@ -13,6 +13,8 @@ test('routes portables et correspondance des sections',()=>{
  assert.equal(currentPage('/bibliotheque/index.html'),'bibliotheque');
  assert.equal(currentPage('/universia/'),'accueil');
  assert.equal(currentPage('/cas-pratiques/'),'cas');
+ assert.equal(currentPage('/universia/skills/'),'skills');
+ assert.match(destinationForHash('#skills-detail'),/skills\/#skills-detail$/);
  assert.ok(pageUrl('accueil').endsWith('/'));
  assert.match(destinationForHash('#studio'),/outils\/#studio$/);
  assert.match(destinationForHash('#promptotheque'),/prompts\/#promptotheque$/);
@@ -25,5 +27,5 @@ test('homepage allégée, retour et CSS dédié',()=>{
  assert.ok(src.includes('mountConstellation()'));
  assert.ok(css.includes('data-page="accueil"'));
  const router=readFileSync('multi-page.js','utf8');
- for(const id of ['accueil','bibliotheque','ressources','recherche','outils','prompts','formations','cas','integrite'])assert.ok(router.includes(id));
+ for(const id of ['accueil','bibliotheque','ressources','recherche','outils','prompts','formations','cas','integrite','skills'])assert.ok(router.includes(id));
 });
