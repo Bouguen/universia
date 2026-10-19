@@ -57,7 +57,9 @@ export function applyMultipage(){
   const info=sections.find(s=>s.id===page);
   const intro=document.createElement('section');
   intro.className='mp-intro';
-  intro.innerHTML='<div class="shell"><a class="mp-crumb" href="'+esc(pageUrl('accueil'))+'">← Accueil UNIVERS·IA</a><p class="kicker">UNIVERS·IA / '+esc(info.name.toUpperCase())+'</p><h1>'+esc(info.name)+'</h1><p>'+esc(info.description)+'</p></div>';
+  const heading=page==='bibliotheque'?'Bibliothèque universitaire':info.name;
+  const label=page==='bibliotheque'?'FICHES ET MÉTHODES':info.name.toUpperCase();
+  intro.innerHTML='<div class="shell"><a class="mp-crumb" href="'+esc(pageUrl('accueil'))+'">← Accueil UNIVERS·IA</a><p class="kicker">UNIVERS·IA / '+esc(label)+'</p><h1>'+esc(heading)+'</h1><p>'+esc(info.description)+'</p></div>';
   main.prepend(intro);
  }
  for(const a of document.querySelectorAll('a[href^="#"]'))linkFor(a,page);
