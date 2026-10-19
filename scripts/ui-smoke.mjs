@@ -68,7 +68,7 @@ try{
   }
   if(name==='ressources'){
    await page.locator('.resourcegrid .res').first().locator('summary').click();
-   assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').isVisible());
+   assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').first().isVisible());
    assert.equal(await page.locator('.resourcegrid .resource-application').count(),14,'C2 : 14 mini-cas');
    assert.ok((await page.locator('.resourcegrid .res').first().locator('.secondary-resource').getAttribute('href')).includes('fiche='),'C2 : lien vers guide précis');
 
