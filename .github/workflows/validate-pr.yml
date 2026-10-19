@@ -2,7 +2,7 @@ name: Validate UNIVERS-IA pull requests
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, feature/universia-v14-c1-navigation-search]
   workflow_dispatch:
 
 permissions:
