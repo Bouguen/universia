@@ -12,5 +12,5 @@ export const navigationItems=[
  {href:'#modules',label:'Ateliers'},
  {href:'#promptotheque',label:'Promptothèque'}
 ];
-export function navigationMarkup(){return '<nav id="site-nav" class="links" aria-label="Navigation principale">'+navigationItems.map(({href,label})=>'<a href="'+href+'">'+label+'</a>').join('')+'</nav>';}
+export function navigationMarkup(){return '<nav id="site-nav" class="links" aria-label="Navigation principale">'+navigationItems.map(({href,label})=>'<a href="'+href+'">'+label+'</a>').join('')+'</nav><span class="c1-nav-hint" aria-hidden="true">Faites glisser pour découvrir les autres rubriques →</span>';}
 export function initNavigation(){/* Les ancres natives conservent navigation clavier et accès direct. */}
