@@ -1,3 +1,4 @@
+import {mountConstellation} from './constellation-ui.js';
 import {mountPortalSearch} from './portal-search-ui.js';
 import {resourceGuides} from './resource-guides.js';
 import {mountLotB} from './lot-b-ui.js';
@@ -19,6 +20,7 @@ function attach(){document.querySelectorAll('[data-group]').forEach(a=>a.addEven
 function syncChips(){document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('on',b.dataset.filter===selectedGroup))}
 render();
 initNavigation(document);
+mountConstellation();
 mountPortalSearch();
 mountLotB();
 mountV1();
