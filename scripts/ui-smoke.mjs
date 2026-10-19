@@ -50,8 +50,13 @@ try{
   }
   if(name==='bibliotheque'){
    assert.equal(await page.locator('.lotb-card').count(),24);
+   assert.equal((await page.locator('.mp-intro h1').textContent()).trim(),'Bibliothèque universitaire','Un seul titre principal de bibliothèque');
+   assert.ok(!(await page.locator('#bibliotheque .sectiontop h2').textContent()).includes('Bibliothèque'),'Ne pas répéter Bibliothèque dans la section');
+   assert.equal(await page.getByText('NOUVEAU · LOT B').count(),0,'Ne pas afficher les mentions de développement');
    await page.locator('#lotb-search').fill('entretien');
    assert.ok(await page.locator('.lotb-card').count()>0,'Filtre bibliothèque non fonctionnel');
+   await page.goto(base+'bibliotheque/?categorie=Recherche#bibliotheque',{waitUntil:'networkidle'});
+   assert.equal(await page.locator('#lotb-category').inputValue(),'Recherche','Le lien direct doit activer le filtre Recherche');
   }
   if(name==='ressources'){
    await page.locator('.resourcegrid .res').first().locator('summary').click();
@@ -64,6 +69,16 @@ try{
   await page.screenshot({path:'screenshots/universia-'+name+'.png',fullPage:false});
   console.log(name,': OK');
   await page.close();
+ }
+ {
+  const medium=await browser.newPage({viewport:{width:980,height:900}});
+  await medium.goto(base,{waitUntil:'networkidle'});
+  const title=await medium.locator('.hero h1').boundingBox();
+  const network=await medium.locator('#accueil #constellation').boundingBox();
+  assert.ok(title&&network&&network.x>=title.x+title.width-5,'Constellation à droite du titre sur ordinateur de largeur intermédiaire');
+  assert.equal(await medium.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'Aucun débordement horizontal à 980 px');
+  await medium.screenshot({path:'screenshots/universia-accueil-980.png',fullPage:false});
+  await medium.close();
  }
  for(const [name,slug] of [['accueil',''],['bibliotheque','bibliotheque/'],['outils','outils/'],['formations','formations/']]){
   const page=await browser.newPage({viewport:{width:390,height:844}});
