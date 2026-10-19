@@ -237,7 +237,7 @@ export const casePracticals={
     "Codebook et tableau de désaccords"
   ],
   "s2": [
-    "Justifier une revue de portée",
+    "Justifier le choix méthodologique d’une revue de portée",
     "Définir l’extraction par publics et pratiques",
     "Documenter limites et types de preuve",
     "Grille question–méthode–résultat–limites"
