@@ -57,6 +57,36 @@ try{
   if(name==='accueil'||name==='recherche'){
    assert.equal(await page.locator('#atelier-approfondi').count(),0,'C3 : pas de module hors contexte');
   }
+  if(name==='formations'){
+   assert.equal(await page.locator('#academie').count(),1,'Académie visible sur Formations');
+   assert.equal(await page.locator('#academy-tracks button').count(),12,'12 parcours complets');
+   assert.equal(await page.locator('.academy-lesson').count(),4,'Quatre leçons dans le parcours');
+   await page.locator('#academy-select').selectOption('bibliographie');
+   assert.ok((await page.locator('.academy-header h3').textContent()).includes('Recherche documentaire'),'Parcours sélectionné');
+   await page.locator('.academy-lesson').first().locator('summary').click();
+   await page.locator('.academy-lesson').first().locator('.academy-correction summary').click();
+   assert.ok(await page.locator('.academy-lesson').first().locator('.academy-correction p').isVisible(),'Corrigé visible');
+   await page.locator('.academy-lesson').first().locator('[data-academy-complete]').click();
+   assert.ok((await page.locator('.academy-progress span').textContent()).includes('1/4'),'Progression déclarative');
+   await page.reload({waitUntil:'networkidle'});
+   await page.locator('#academy-select').selectOption('bibliographie');
+   assert.ok((await page.locator('.academy-progress span').textContent()).includes('1/4'),'Progression persistée');
+   await page.locator('[data-academy-reset]').click();
+   assert.ok((await page.locator('.academy-progress span').textContent()).includes('0/4'),'Réinitialisation du parcours');
+   await page.screenshot({path:'screenshots/universia-academie-parcours.png',fullPage:false});
+  }
+  if(name==='cas'){
+   const first=page.locator('#u12-cases .u12-case').first();
+   const title=(await first.locator('h4').textContent()).trim();
+   const link=first.getByRole('link',{name:/Ouvrir dans le studio/});
+   assert.equal(await link.count(),1,'Lien Studio doit être une vraie ancre');
+   await link.click();
+   await page.waitForURL(/\/outils\/\?cas=/);
+   assert.equal(await page.locator('#studio').count(),1,'Le Studio est présent après navigation');
+   const values=await page.locator('#u12-fieldset input').evaluateAll(inputs=>inputs.map(input=>input.value));
+   assert.ok(values.some(v=>v.includes(title)),'Sujet du cas prérempli dans le Studio');
+   assert.ok((await page.locator('#u12-notes').inputValue()).includes('CAS D’USAGE FICTIF'),'Contexte du cas transféré au Studio');
+  }
   if(name==='bibliotheque'){
    assert.equal(await page.locator('.lotb-card').count(),24);
    assert.equal(await page.locator('.lotb-card .deep-guide').count(),24,'C2 : 24 ateliers rendus');
