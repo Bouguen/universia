@@ -48,8 +48,52 @@ try{
    const shortcut=page.locator('.hero .actions a[href="#constellation"]');assert.equal(await shortcut.count(),1);
    await shortcut.click();assert.equal(new URL(page.url()).hash,'#constellation');
   }
+  if(['outils','formations','cas','integrite'].includes(name)){
+   assert.equal(await page.locator('#atelier-approfondi').count(),1,'C3 : module sur la bonne page');
+   assert.ok((await page.locator('.c3-card').count())>=4,'C3 : fiches disponibles');
+   await page.locator('.c3-card').first().locator('summary').click();
+   assert.ok(await page.locator('.c3-card').first().locator('.c3-body').isVisible(),'C3 : contenu ouvert');
+  }
+  if(name==='accueil'||name==='recherche'){
+   assert.equal(await page.locator('#atelier-approfondi').count(),0,'C3 : pas de module hors contexte');
+  }
+  if(name==='formations'){
+   assert.equal(await page.locator('#academie').count(),1,'Académie visible sur Formations');
+   assert.equal(await page.locator('#academy-tracks button').count(),12,'12 parcours complets');
+   assert.equal(await page.locator('.academy-lesson').count(),4,'Quatre leçons dans le parcours');
+   await page.locator('#academy-select').selectOption('bibliographie');
+   assert.ok((await page.locator('.academy-header h3').textContent()).includes('Recherche documentaire'),'Parcours sélectionné');
+   await page.locator('.academy-lesson').first().locator('summary').first().click();
+   await page.locator('.academy-lesson').first().locator('.academy-correction summary').click();
+   assert.ok(await page.locator('.academy-lesson').first().locator('.academy-correction p').isVisible(),'Corrigé visible');
+   await page.locator('.academy-lesson').first().locator('[data-academy-complete]').click();
+   assert.ok((await page.locator('.academy-progress span').textContent()).includes('1/4'),'Progression déclarative');
+   await page.reload({waitUntil:'networkidle'});
+   await page.locator('#academy-select').selectOption('bibliographie');
+   assert.ok((await page.locator('.academy-progress span').textContent()).includes('1/4'),'Progression persistée');
+   await page.locator('[data-academy-reset]').click();
+   assert.ok((await page.locator('.academy-progress span').textContent()).includes('0/4'),'Réinitialisation du parcours');
+   await page.screenshot({path:'screenshots/universia-academie-parcours.png',fullPage:false});
+  }
+  if(name==='cas'){
+   const first=page.locator('#u12-cases .u12-case').first();
+   const title=(await first.locator('h4').textContent()).trim();
+   const link=first.getByRole('link',{name:/Ouvrir dans le studio/});
+   assert.equal(await link.count(),1,'Lien Studio doit être une vraie ancre');
+   await link.click();
+   await page.waitForURL(/\/outils\/\?cas=/);
+   assert.equal(await page.locator('#studio').count(),1,'Le Studio est présent après navigation');
+   const values=await page.locator('#u12-fieldset input').evaluateAll(inputs=>inputs.map(input=>input.value));
+   assert.ok(values.some(v=>v.includes(title)),'Sujet du cas prérempli dans le Studio');
+   assert.ok((await page.locator('#u12-notes').inputValue()).includes('CAS D’USAGE FICTIF'),'Contexte du cas transféré au Studio');
+  }
   if(name==='bibliotheque'){
    assert.equal(await page.locator('.lotb-card').count(),24);
+   assert.equal(await page.locator('.lotb-card .deep-guide').count(),24,'C2 : 24 ateliers rendus');
+   await page.locator('.lotb-card').first().locator('summary').click();
+   assert.ok(await page.locator('.lotb-card').first().locator('.deep-guide-prompt textarea').isVisible(),'C2 : prompt consultable');
+   assert.equal(await page.locator('.lotb-card').first().locator('.deep-guide-checklist li').count(),3,'C2 : grille de contrôle');
+
    assert.equal((await page.locator('.mp-intro h1').textContent()).trim(),'Bibliothèque universitaire','Un seul titre principal de bibliothèque');
    assert.ok(!(await page.locator('#bibliotheque .sectiontop h2').textContent()).includes('Bibliothèque'),'Ne pas répéter Bibliothèque dans la section');
    const headings=(await page.locator('.mp-intro').innerText())+' '+(await page.locator('#bibliotheque .sectiontop').innerText());
@@ -63,7 +107,10 @@ try{
   }
   if(name==='ressources'){
    await page.locator('.resourcegrid .res').first().locator('summary').click();
-   assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').isVisible());
+   assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').first().isVisible());
+   assert.equal(await page.locator('.resourcegrid .resource-application').count(),14,'C2 : 14 mini-cas');
+   assert.ok((await page.locator('.resourcegrid .res').first().locator('.secondary-resource').getAttribute('href')).includes('fiche='),'C2 : lien vers guide précis');
+
   }
   if(name==='recherche'){
    await page.locator('#portal-query').fill('revue');
