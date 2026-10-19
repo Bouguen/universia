@@ -2,6 +2,7 @@
 export const navigationItems=[
  {href:'#parcours',label:'Parcours'},
  {href:'#ressources',label:'Ressources'},
+ {href:'#recherche-globale',label:'Recherche'},
  {href:'#bibliotheque',label:'Bibliothèque'},
  {href:'#outils',label:'Générateurs'},
  {href:'#studio',label:'Studio'},
