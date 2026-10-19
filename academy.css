@@ -44,3 +44,6 @@
 .academy-status{font-size:.82rem;color:#0d7468;min-height:1em}
 @media(max-width:1000px){.academy-layout{grid-template-columns:1fr}.academy-sidebar{position:static;max-height:none}.academy-track-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.academy-section{padding:42px 0}.academy-track-list{grid-template-columns:1fr}.academy-header,.academy-summary,.academy-references{padding:16px}.academy-lesson-body{padding:14px}.academy-lesson>summary{padding:14px;flex-wrap:wrap}.academy-done{margin-left:auto}}
+
+/* Tablette et mobile : sélecteur de parcours compact, sans douze boutons avant les leçons. */
+@media(max-width:1000px){.academy-track-list{display:none}.academy-sidebar{padding:13px}.academy-sidebar select{font-size:1rem}}
