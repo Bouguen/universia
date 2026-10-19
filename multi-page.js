@@ -18,6 +18,7 @@ const widgetSections={
 function linkFor(a,page){
  const raw=a.getAttribute('href')||'';
  if(!raw.startsWith('#')||raw==='#')return;
+ if(a.dataset.params){a.href=destinationForHash(raw,a.dataset.params);return;}
  if(a.dataset.group){
    a.href=destinationForHash('#ressources','theme='+encodeURIComponent(a.dataset.group));
    return;
@@ -74,6 +75,8 @@ export function applyMultipage(){
   if(select&&category&&[...select.options].some(o=>o.value===category)){
    select.value=category;select.dispatchEvent(new Event('change',{bubbles:true}));
   }
+  const target=new URLSearchParams(window.location.search).get('fiche');
+  if(target){const card=document.querySelector('#lotb-results [data-fiche]');const exact=[...document.querySelectorAll('#lotb-results [data-fiche]')].find(el=>el.dataset.fiche===target);if(exact){exact.open=true;exact.scrollIntoView({block:'start'});exact.querySelector('summary')?.focus();}}
  }
  // Les résultats de recherche sont reconstruits après chaque frappe; leur routage doit rester actif.
  const discovery=document.querySelector('#recherche-globale');
