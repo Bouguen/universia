@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {portalIndex,searchPortal,paginatePortal} from './portal-search.js';
+test('all results are accessible through pagination',()=>{const all=searchPortal();const pages=Math.ceil(all.length/12);let total=0;for(let p=1;p<=pages;p++){const x=paginatePortal(all,p);assert.ok(x.items.length<=12);total+=x.items.length;}assert.equal(total,all.length);});
+test('library and resource links include exact targets',()=>{for(const x of portalIndex.filter(x=>['Bibliothèque','Ressources'].includes(x.type))){assert.ok(x.params);assert.ok(x.params.startsWith(x.type==='Bibliothèque'?'fiche=':'ressource='));}});
+test('page bounds and filtering',()=>{assert.equal(paginatePortal([1,2,3],99,2).page,2);assert.equal(paginatePortal([1,2,3],-3,2).page,1);assert.ok(searchPortal({query:'recherche'}).length>0);});

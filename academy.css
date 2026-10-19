@@ -1,0 +1,49 @@
+/* Universia Académie — progression accessible et contenus gradués. */
+.academy-section{padding:66px 0;background:#edf8f4;scroll-margin-top:115px}
+.academy-section .sectiontop h2{font-size:clamp(31px,3.6vw,48px)}
+.academy-layout{display:grid;grid-template-columns:minmax(215px,.36fr) minmax(0,1fr);gap:22px;align-items:start;margin-top:30px}
+.academy-sidebar{position:sticky;top:130px;border:1px solid #cbe0d8;border-radius:15px;background:#fff;padding:16px;max-height:calc(100vh - 145px);overflow-y:auto}
+.academy-sidebar label{font-size:.9rem;font-weight:800;color:#183f46;display:block;margin-bottom:8px}
+.academy-sidebar select{width:100%;max-width:100%;min-height:44px;border:1px solid #abcac3;border-radius:9px;background:#fff;padding:8px;color:#173b43}
+.academy-track-list{display:grid;gap:5px;margin:15px 0}
+.academy-track-list button{display:grid;gap:5px;text-align:left;padding:12px;border:1px solid transparent;border-radius:10px;background:#f6faf8;color:#163b47}
+.academy-track-list button.on,.academy-track-list button[aria-current="true"]{background:#e5f6f0;border-color:#64b9a8}
+.academy-track-list button span{font-weight:800;font-size:.87rem}
+.academy-track-list button small{color:#45676a;font-size:.74rem}
+.academy-small{font-size:.78rem;color:#57716c;line-height:1.55}
+.academy-content{min-width:0}
+.academy-header,.academy-summary,.academy-references{background:#fff;border:1px solid #cee2da;border-radius:14px;padding:23px;margin-bottom:16px}
+.academy-header h3{font-size:clamp(24px,2.4vw,34px);line-height:1.2;margin:9px 0}
+.academy-level{font-size:.78rem;letter-spacing:.4px;color:#176e65;font-weight:800}
+.academy-progress{display:flex;align-items:center;gap:14px;margin:15px 0;flex-wrap:wrap;font-size:.82rem;color:#41656a}
+.academy-progress progress{width:min(320px,100%);height:14px;accent-color:#0c9d8b}
+.academy-actions{display:flex;flex-wrap:wrap;gap:10px}
+.academy-actions button,.academy-lesson-body>button{border:1px solid #0a776b;background:#fff;color:#07695e;padding:10px 15px;min-height:44px;border-radius:9px;font-weight:750}
+.academy-actions button:first-child,.academy-lesson-body>button{color:#fff;background:#07796c}
+.academy-lessons{display:grid;gap:12px}
+.academy-lesson{border:1px solid #cfe2dd;border-radius:13px;background:#fff;overflow:hidden}
+.academy-lesson>summary{display:flex;align-items:center;gap:14px;padding:18px;cursor:pointer;min-height:58px}
+.academy-lesson[open]>summary{background:#f3faf7}
+.academy-lesson-num{color:#098473;font-weight:900}
+.academy-lesson-title{font-weight:800;color:#173d49;flex:1}
+.academy-done{font-size:.75rem;font-weight:800;color:#3e6669;white-space:nowrap}
+.academy-lesson-body{padding:20px 25px 22px;line-height:1.73}
+.academy-lesson-body h4,.academy-summary h4,.academy-references h4{font-size:1.05rem;color:#114b47;margin:16px 0 7px}
+.academy-lesson-body p{margin:8px 0 13px}
+.academy-example{background:#eaf7f2;border-left:4px solid #0a9782;padding:11px 16px;border-radius:9px;margin:17px 0}
+.academy-exercise{border:1px solid #b7d9d0;border-radius:11px;padding:14px;background:#fbfefd;margin:15px 0}
+.academy-exercise label{display:block;font-weight:750;margin-top:12px}
+.academy-exercise label small{font-weight:400;color:#556e71}
+.academy-exercise textarea{box-sizing:border-box;width:100%;min-height:115px;max-width:100%;padding:12px;margin:6px 0;border:1px solid #accac3;border-radius:8px;font:inherit;background:#fff}
+.academy-correction{background:#e7f3ef;border-radius:9px;margin-top:7px;padding:10px 12px}
+.academy-correction summary{cursor:pointer;font-weight:850;color:#086b60;min-height:40px;display:list-item}
+.academy-check{border-top:1px solid #dcece7;margin:14px 0;padding-top:7px}
+.academy-summary ul{padding-left:22px;line-height:1.85}
+.academy-references a{color:#06766b;text-decoration:underline;font-weight:750}
+.academy-references small{display:block;font-size:.78rem;color:#557172}
+.academy-status{font-size:.82rem;color:#0d7468;min-height:1em}
+@media(max-width:1000px){.academy-layout{grid-template-columns:1fr}.academy-sidebar{position:static;max-height:none}.academy-track-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.academy-section{padding:42px 0}.academy-track-list{grid-template-columns:1fr}.academy-header,.academy-summary,.academy-references{padding:16px}.academy-lesson-body{padding:14px}.academy-lesson>summary{padding:14px;flex-wrap:wrap}.academy-done{margin-left:auto}}
+
+/* Tablette et mobile : sélecteur de parcours compact, sans douze boutons avant les leçons. */
+@media(max-width:1000px){.academy-track-list{display:none}.academy-sidebar{padding:13px}.academy-sidebar select{font-size:1rem}}
