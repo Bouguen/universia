@@ -5,7 +5,7 @@ import {workflows,cases,advancedCourses} from './v12-data.js';
 import {libraryEntries} from './lot-b-data.js';
 export const normalizeSearch=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr').trim();
 export const portalIndex=[
- ...resources.map((x,i)=>({id:'resource-'+i,type:'Ressources',title:x.title,desc:x.desc,href:'#ressources',search:x.title+' '+x.desc+' '+(themes.find(t=>t.id===x.group)?.title||'')})),
+ ...resources.map((x,i)=>({id:'resource-'+i,type:'Ressources',title:x.title,desc:x.desc,href:'#ressources',params:'ressource='+encodeURIComponent(x.title),search:x.title+' '+x.desc+' '+(themes.find(t=>t.id===x.group)?.title||'')})),
  ...libraryEntries.map(x=>({id:'library-'+x.id,type:'Bibliothèque',title:x.title,desc:x.summary,href:'#bibliotheque',params:'fiche='+encodeURIComponent(x.id),search:x.title+' '+x.summary+' '+x.category+' '+x.audience+' '+x.steps.join(' ')})),
  ...prompts.map(x=>({id:'starter-'+x.id,type:'Prompts',title:x.label,desc:x.task,href:'#atelier',search:x.label+' '+x.task+' '+x.details})),
  ...academicTemplates.map(x=>({id:'generator-'+x.id,type:'Générateurs',title:x.name,desc:x.area,href:'#outils',search:x.name+' '+x.area})),
