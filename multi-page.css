@@ -88,3 +88,9 @@ body .head .nav .navcta,body .head .nav .menu-toggle{display:none!important}
 body[data-page="bibliotheque"] .lotb-section{padding-top:38px;padding-bottom:65px}
 body[data-page="bibliotheque"] .lotb-section .sectiontop h2{font-size:clamp(29px,3.2vw,43px);line-height:1.18;letter-spacing:-1.45px}
 @media(max-width:650px){body[data-page="bibliotheque"] .lotb-section{padding-top:25px;padding-bottom:50px}}
+
+/* C1 : barre de navigation horizontale compacte sur petits écrans. */
+@media(max-width:760px){
+ body .head .nav .links{flex-wrap:nowrap!important;overflow-x:auto!important;overflow-y:hidden!important;scrollbar-width:thin;overscroll-behavior-x:contain;white-space:nowrap;max-width:100%!important;gap:4px!important;padding-bottom:8px!important}
+ body .head .nav .links a{white-space:nowrap!important;flex:none!important;min-height:44px!important}
+}
