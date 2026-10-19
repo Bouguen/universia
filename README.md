@@ -1,6 +1,28 @@
-# UNIVERS·IA V1 — plateforme universitaire indépendante
+# UNIVERS·IA — Portail universitaire indépendant
 
 Prototype web francophone consacré à l'IA pour l'enseignement supérieur. Projet indépendant de SCOLAR·IA : aucun fichier, dépôt, domaine ou environnement de production SCOLAR·IA n'est modifié.
+
+## V1.3 — Architecture multipage (Preview de la PR #2)
+
+L'accueil est volontairement allégé : présentation, **constellation interactive** et six parcours. Chaque rubrique est ensuite accessible par une URL dédiée.
+
+| URL (relative au domaine) | Contenu |
+|---|---|
+| `/` | Accueil, constellation et parcours |
+| `/bibliotheque/` | 24 fiches méthodologiques filtrables |
+| `/ressources/` | 14 cartes de ressources, filtres et favoris |
+| `/recherche/` | Recherche locale dans tout le catalogue |
+| `/outils/` | Générateurs et studio académique |
+| `/prompts/` | Atelier et promptothèque |
+| `/formations/` | Formations, ateliers et parcours avancés |
+| `/cas-pratiques/` | Exemples disciplinaires |
+| `/integrite/` | Responsabilité, protection des données et références |
+
+**Déploiement** : Vite produit neuf fichiers HTML indépendants, et le module `multi-routes.js` génère des liens compatibles avec le domaine racine de Vercel ainsi qu'avec la base `/universia/` de GitHub Pages. Les liens de la constellation mènent aux pages et appliquent des filtres thématiques quand nécessaire.
+
+**Validations** : `npm test`, construction GitHub Pages `npm run build`, construction Vercel `VERCEL=1 npm run build` et tests navigateur sur les neuf pages des deux bases, ainsi que des contrôles mobiles. Les données de progression, les favoris et les prompts restent locaux au navigateur.
+
+**Statut** : version en prévisualisation, à ne pas fusionner ni publier sans validation de l'utilisateur. SCOLAR·IA est indépendant et inchangé.
 
 ## Fonctionnalités disponibles
 

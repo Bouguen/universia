@@ -31,6 +31,22 @@ jobs:
             exit 1
           fi
           grep -q '/universia/assets/' dist/index.html
+      - name: Verify all GitHub Pages entry points
+        run: |
+          for p in bibliotheque ressources recherche outils prompts formations cas-pratiques integrite; do
+            test -s "dist/$p/index.html"
+            grep -q '/universia/assets/' "dist/$p/index.html"
+          done
+      - name: Install browser test driver
+        run: npm install --no-save --no-package-lock playwright-core
+      - name: Browser smoke test (GitHub Pages-style build)
+        run: |
+          npm run preview -- --host 127.0.0.1 --port 4174 > /tmp/universia-github-preview.log 2>&1 &
+          for i in {1..30}; do
+            curl -fsS http://127.0.0.1:4174/universia/ >/dev/null && break
+            sleep 1
+          done
+          UI_URL=http://127.0.0.1:4174/universia/ CHROME_BIN=$(command -v google-chrome) node scripts/ui-smoke.mjs
       - name: Build Vercel Preview assets
         run: VERCEL=1 npm run build
       - name: Verify Vercel root paths
@@ -42,8 +58,12 @@ jobs:
             echo "Unexpected GitHub Pages path in Vercel build" >&2
             exit 1
           fi
-      - name: Install browser test driver
-        run: npm install --no-save --no-package-lock playwright-core
+      - name: Verify all Vercel entry points
+        run: |
+          for p in bibliotheque ressources recherche outils prompts formations cas-pratiques integrite; do
+            test -s "dist/$p/index.html"
+            grep -q '/assets/' "dist/$p/index.html"
+          done
       - name: Browser smoke test (Vercel-style build)
         run: |
           VERCEL=1 npm run preview -- --host 127.0.0.1 --port 4173 > /tmp/universia-preview.log 2>&1 &

@@ -1,0 +1,20 @@
+import {resources,prompts,themes} from './data.js';
+import {academicTemplates,academicPrompts,courses} from './v1-data.js';
+import {lessons} from './v11-data.js';
+import {workflows,cases,advancedCourses} from './v12-data.js';
+import {libraryEntries} from './lot-b-data.js';
+export const normalizeSearch=v=>String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('fr').trim();
+export const portalIndex=[
+ ...resources.map((x,i)=>({id:'resource-'+i,type:'Ressources',title:x.title,desc:x.desc,href:'#ressources',search:x.title+' '+x.desc+' '+(themes.find(t=>t.id===x.group)?.title||'')})),
+ ...libraryEntries.map(x=>({id:'library-'+x.id,type:'Bibliothèque',title:x.title,desc:x.summary,href:'#bibliotheque',search:x.title+' '+x.summary+' '+x.category+' '+x.audience+' '+x.steps.join(' ')})),
+ ...prompts.map(x=>({id:'starter-'+x.id,type:'Prompts',title:x.label,desc:x.task,href:'#atelier',search:x.label+' '+x.task+' '+x.details})),
+ ...academicTemplates.map(x=>({id:'generator-'+x.id,type:'Générateurs',title:x.name,desc:x.area,href:'#outils',search:x.name+' '+x.area})),
+ ...academicPrompts.map((x,i)=>({id:'prompt-'+i,type:'Prompts',title:x.title,desc:x.area,href:'#promptotheque',search:x.title+' '+x.area})),
+ ...courses.map(x=>({id:'course-'+x.id,type:'Formations',title:x.title,desc:x.level,href:'#formations',search:x.title+' '+x.level})),
+ ...lessons.map(x=>({id:'workshop-'+x.id,type:'Formations',title:x.title,desc:x.category,href:'#modules',search:x.title+' '+x.category})),
+ ...workflows.map(x=>({id:'workflow-'+x.id,type:'Générateurs',title:x.name,desc:x.goal,href:'#studio',search:x.name+' '+x.area+' '+x.goal})),
+ ...cases.map(x=>({id:'case-'+x.id,type:'Cas pratiques',title:x.title,desc:x.context,href:'#cas-academiques',search:x.title+' '+x.context+' '+x.expected})),
+ ...advancedCourses.map(x=>({id:'advanced-'+x.id,type:'Formations',title:x.title,desc:x.audience,href:'#formations-approfondies',search:x.title+' '+x.audience}))
+];
+export const portalTypes=['Tous',...new Set(portalIndex.map(x=>x.type))];
+export function searchPortal({query='',type='Tous'}={}){const q=normalizeSearch(query);return portalIndex.filter(x=>(type==='Tous'||type===x.type)&&(!q||normalizeSearch(x.search).includes(q)));}

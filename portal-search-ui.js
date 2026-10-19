@@ -1,0 +1,10 @@
+import {portalIndex,portalTypes,searchPortal} from './portal-search.js';
+import './portal-search.css';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function mountPortalSearch(){
+ const el=document.createElement('section');el.id='recherche-globale';el.className='portal-search section';el.innerHTML=`<div class="shell"><div class="sectiontop"><div><p class="kicker">RECHERCHE TRANSVERSALE</p><h2>Tout le portail,<br><em>en une recherche.</em></h2></div><p>Retrouvez fiches, prompts, générateurs, cas pratiques et formations. Les résultats renvoient à leurs rubriques.</p></div><div class="portal-searchbar"><label>Que recherchez-vous ?<input type="search" id="portal-query" placeholder="Ex. revue de littérature, évaluation, syllabus"></label><label>Type de ressource<select id="portal-type">${portalTypes.map(t=>`<option>${esc(t)}</option>`).join('')}</select></label></div><p id="portal-count" role="status" aria-live="polite"></p><div id="portal-results" class="portal-results"></div><p class="portal-note">Recherche locale dans les contenus publiés sur ce portail, sans transmission de vos requêtes à un service tiers.</p></div>`;
+ const anchor=document.querySelector('#accueil');anchor?.after(el);
+ const query=el.querySelector('#portal-query'),type=el.querySelector('#portal-type'),results=el.querySelector('#portal-results'),count=el.querySelector('#portal-count');
+ const draw=()=>{const matches=searchPortal({query:query.value,type:type.value});count.textContent=matches.length+' résultat(s) sur '+portalIndex.length;results.innerHTML=matches.slice(0,32).map(x=>`<a class="portal-result" href="${esc(x.href)}"><span>${esc(x.type)}</span><strong>${esc(x.title)}</strong><small>${esc(x.desc)}</small><em>Accéder à la rubrique ↗</em></a>`).join('')||'<p>Aucun résultat. Essayez un autre terme ou un autre filtre.</p>';};
+ query.addEventListener('input',draw);type.addEventListener('change',draw);draw();
+}
