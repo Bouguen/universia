@@ -52,6 +52,9 @@ try{
    assert.equal(await page.locator('.lotb-card').count(),24);
    assert.equal((await page.locator('.mp-intro h1').textContent()).trim(),'Bibliothèque universitaire','Un seul titre principal de bibliothèque');
    assert.ok(!(await page.locator('#bibliotheque .sectiontop h2').textContent()).includes('Bibliothèque'),'Ne pas répéter Bibliothèque dans la section');
+   const headings=(await page.locator('.mp-intro').innerText())+' '+(await page.locator('#bibliotheque .sectiontop').innerText());
+   assert.ok(!/24 fiches|vingt-quatre fiches/i.test(headings),'Ne pas répéter le total des fiches dans les deux introductions');
+   assert.ok((await page.locator('#bibliotheque .sectiontop h2').textContent()).includes('Trouvez la méthode'),'Sous-titre orienté utilisateur attendu');
    assert.equal(await page.getByText('NOUVEAU · LOT B').count(),0,'Ne pas afficher les mentions de développement');
    await page.locator('#lotb-search').fill('entretien');
    assert.ok(await page.locator('.lotb-card').count()>0,'Filtre bibliothèque non fonctionnel');
