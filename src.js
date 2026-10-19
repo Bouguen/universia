@@ -1,4 +1,5 @@
 import {mountAcademy} from './academy-ui.js';
+import {mountSkills} from './skills-ui.js';
 import {mountC3} from './c3-ui.js';
 import {pageUrl} from './multi-routes.js';
 import {resourceApplications} from './resource-applications.js';
@@ -32,6 +33,7 @@ mountV1();
 const v11Root=document.createElement("div");v11Root.id="universia-v11";document.querySelector("#univ-v1")?.after(v11Root);mountV11();
 
 const v12Root=document.createElement("div");v12Root.id="universia-v12";document.querySelector("#universia-v11")?.after(v12Root);mountV12();
+const skillsRoot=document.createElement('div');skillsRoot.id='universia-skills';document.querySelector('#universia-v12')?.after(skillsRoot);mountSkills();
 applyMultipage();
 mountAcademy();
 mountC3();
