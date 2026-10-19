@@ -133,6 +133,35 @@ try{
   await page.close();
  }
  {
+  const examples=[[1,'syllabus'],[10,'feedback'],[12,'review'],[19,'reviewers'],[22,'assessment']];
+  const p=await browser.newPage({viewport:{width:1440,height:900}});
+  await p.goto(base+'prompts/',{waitUntil:'networkidle'});
+  assert.equal(await p.locator('#v1-catalog .v1-pick').count(),24,'Tous les 24 exemples doivent être accessibles');
+  for(const [id,template] of examples){
+   if(id!==1)await p.goto(base+'prompts/',{waitUntil:'networkidle'});
+   const el=p.locator('#v1-catalog a.v1-pick[href*="prompt='+id+'#outils"]');
+   assert.equal(await el.count(),1,'Un vrai lien pour l’exemple '+id);
+   const title=(await el.locator('..').locator('h3').textContent()).trim();
+   await el.click();
+   await p.waitForURL(url=>url.pathname.endsWith('/outils/')&&url.searchParams.get('prompt')===String(id));
+   assert.equal(await p.locator('#v1-tool').inputValue(),template,'Bon générateur pour '+id);
+   assert.equal(await p.locator('#v1-goals').inputValue(),title,'Objectif prérempli '+id);
+   assert.ok((await p.locator('#v1-output').textContent()).includes(title),'Prompt réellement personnalisé '+id);
+   assert.ok((await p.locator('#v1-example-status').textContent()).includes(title),'Confirmation visible '+id);
+   assert.ok(await p.locator('#v1-example-status').isVisible(),'Confirmation accessible '+id);
+  }
+  await p.reload({waitUntil:'networkidle'});
+  assert.equal(await p.locator('#v1-tool').inputValue(),'assessment','Lien partageable après rechargement');
+  await p.close();
+  const mobile=await browser.newPage({viewport:{width:390,height:844}});
+  await mobile.goto(base+'prompts/',{waitUntil:'networkidle'});
+  await mobile.locator('#v1-catalog a.v1-pick').first().click();
+  await mobile.waitForURL(url=>url.pathname.endsWith('/outils/')&&url.searchParams.has('prompt'));
+  assert.ok((await mobile.locator('#v1-output').textContent()).length>50,'Préremplissage mobile');
+  assert.equal(await mobile.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,'Promptothèque → générateur sans débordement mobile');
+  await mobile.close();
+ }
+ {
   const medium=await browser.newPage({viewport:{width:980,height:900}});
   await medium.goto(base,{waitUntil:'networkidle'});
   const title=await medium.locator('.hero h1').boundingBox();
