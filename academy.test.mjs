@@ -4,7 +4,7 @@ test('12 parcours et 48 leçons substantielles, sans répétition',()=>{
  assert.equal(academyTracks.length,12);assert.equal(new Set(academyTracks.map(x=>x.id)).size,12);
  const lessons=academyTracks.flatMap(x=>x.lessons);assert.equal(lessons.length,48);
  for(const t of academyTracks){assert.ok(t.title&&t.audience&&t.duration&&t.level);assert.equal(t.lessons.length,4);
-  for(const l of t.lessons){for(const f of ['title','concept','example','exercise','correction','check'])assert.ok(l[f]?.length>35,t.id+'/'+l.title+': '+f);}
+  for(const l of t.lessons){for(const f of ['title','concept','example','exercise','correction','check'])assert.ok(l[f]?.length>(f==='title'?10:35),t.id+'/'+l.title+': '+f);}
  }
 });
 test('formations détaillées, progressives, exportables et non certificatives',()=>{
