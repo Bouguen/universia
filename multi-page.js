@@ -1,3 +1,4 @@
+import {applySearchTarget,enableCrossPageActions} from './c1-targets.js';
 import {currentPage,sections,pageUrl,pageLinks,destinationForHash} from './multi-routes.js';
 import {constellationNodes} from './constellation-data.js';
 import './multi-page.css';
@@ -81,5 +82,7 @@ export function applyMultipage(){
   const a=event.target.closest('a[href^="#"]');if(!a)return;
   linkFor(a,page);
  });
+ enableCrossPageActions(page);
+ applySearchTarget();
  document.querySelector('footer .footergrid>span')?.replaceChildren(document.createTextNode('VERSION V1.3 · MULTIPAGE · 2026'));
 }
