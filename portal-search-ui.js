@@ -1,3 +1,4 @@
+import {destinationForHash} from './multi-routes.js';
 import {portalIndex,portalTypes,searchPortal,paginatePortal} from './portal-search.js';
 import './portal-search.css';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -7,7 +8,7 @@ export function mountPortalSearch(){
  const query=el.querySelector('#portal-query'),type=el.querySelector('#portal-type'),results=el.querySelector('#portal-results'),count=el.querySelector('#portal-count');
  const pages=el.querySelector('#portal-pages');let current=1;
  const draw=()=>{const matches=searchPortal({query:query.value,type:type.value});const currentPage=paginatePortal(matches,current,12);current=currentPage.page;count.textContent=currentPage.total+' résultat(s) sur '+portalIndex.length+' · Page '+current+' sur '+currentPage.pages;
- results.innerHTML=currentPage.items.map(x=>`<a class="portal-result" href="${esc(x.href)}"${x.params?' data-params="'+esc(x.params)+'"':''}><span>${esc(x.type)}</span><strong>${esc(x.title)}</strong><small>${esc(x.desc)}</small><em>Ouvrir ce contenu ↗</em></a>`).join('')||'<p>Aucun résultat. Essayez un autre terme ou un autre filtre.</p>';
+ results.innerHTML=currentPage.items.map(x=>`<a class="portal-result" href="${esc(destinationForHash(x.href,x.params||''))}"${x.params?' data-params="'+esc(x.params)+'"':''}><span>${esc(x.type)}</span><strong>${esc(x.title)}</strong><small>${esc(x.desc)}</small><em>Ouvrir ce contenu ↗</em></a>`).join('')||'<p>Aucun résultat. Essayez un autre terme ou un autre filtre.</p>';
  pages.innerHTML=currentPage.total>12?'<button type="button" data-page="prev" '+(current===1?'disabled':'')+'>← Précédent</button><span>Page '+current+' / '+currentPage.pages+'</span><button type="button" data-page="next" '+(current===currentPage.pages?'disabled':'')+'>Suivant →</button>':'';
  };
  query.addEventListener('input',()=>{current=1;draw();});type.addEventListener('change',()=>{current=1;draw();});
