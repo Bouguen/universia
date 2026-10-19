@@ -63,7 +63,7 @@ try{
    assert.equal(await page.locator('.academy-lesson').count(),4,'Quatre leçons dans le parcours');
    await page.locator('#academy-select').selectOption('bibliographie');
    assert.ok((await page.locator('.academy-header h3').textContent()).includes('Recherche documentaire'),'Parcours sélectionné');
-   await page.locator('.academy-lesson').first().locator('summary').click();
+   await page.locator('.academy-lesson').first().locator('summary').first().click();
    await page.locator('.academy-lesson').first().locator('.academy-correction summary').click();
    assert.ok(await page.locator('.academy-lesson').first().locator('.academy-correction p').isVisible(),'Corrigé visible');
    await page.locator('.academy-lesson').first().locator('[data-academy-complete]').click();
