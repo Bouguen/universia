@@ -66,8 +66,14 @@ try{
    assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').isVisible());
   }
   if(name==='recherche'){
-   await page.locator('#portal-query').fill('revue');
+   assert.equal(await page.locator('.portal-result').count(),12,'Recherche paginée à 12 résultats');
+   await page.locator('#portal-pagination [data-go="next"]').click();
+   assert.ok((await page.locator('#portal-count').textContent()).includes('Page 2 sur'));
+   await page.locator('#portal-size').selectOption('48');
+   assert.equal(await page.locator('.portal-result').count(),48);
+   await page.locator('#portal-query').fill('références bibliographiques');
    assert.ok(await page.locator('.portal-result').count()>0);
+   assert.match(await page.locator('.portal-result').first().getAttribute('href'),/cible=/);
   }
   await page.screenshot({path:'screenshots/universia-'+name+'.png',fullPage:false});
   console.log(name,': OK');
@@ -91,8 +97,38 @@ try{
     assert.equal(await page.locator('#accueil #constellation').count(),1,'Constellation visible dans le hero mobile');
     assert.ok(await page.locator('#constellation').isVisible(),'La constellation doit rester visible sur mobile');
   }
+  const navBox=await page.locator('#site-nav').boundingBox();
+  assert.ok(navBox&&navBox.height<85,name+' mobile : navigation trop haute');
+  assert.ok(await page.locator('#site-nav').evaluate(n=>n.scrollWidth>n.clientWidth),'Bannière mobile défilable');
   for(const item of await page.locator('#site-nav a').all())assert.ok(await item.isVisible(),name+' mobile : lien caché');
   await page.screenshot({path:'screenshots/universia-mobile-'+name+'.png',fullPage:false});
+  await page.close();
+ }
+ {
+  const page=await browser.newPage({viewport:{width:1200,height:850}});
+  await page.goto(base+'bibliotheque/?cible=library-verification-references#bibliotheque',{waitUntil:'networkidle'});
+  assert.ok(await page.locator('[data-library-id="verification-references"]').evaluate(e=>e.open),'Fiche recherchée ouverte');
+  await page.goto(base+'ressources/?cible=resource-4#ressources',{waitUntil:'networkidle'});
+  assert.ok(await page.locator('[data-resource-index="4"] details').evaluate(e=>e.open),'Ressource ciblée ouverte');
+  await page.goto(base+'outils/?cible=generator-rubric#outils',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('#v1-tool').inputValue(),'rubric');
+  await page.goto(base+'prompts/?cible=starter-revue#atelier',{waitUntil:'networkidle'});
+  assert.equal(await page.locator('#template').inputValue(),'revue');
+  await page.goto(base+'recherche/',{waitUntil:'networkidle'});
+  await page.locator('#portal-query').fill('vérifier références bibliographiques');
+  const direct=page.locator('[data-result="resource-4"]');
+  assert.equal(await direct.count(),1,'Résultat précis présent');
+  await direct.click();
+  await page.waitForURL(/ressources\/\?cible=resource-4/);
+  assert.ok(await page.locator('[data-resource-index="4"] details').evaluate(e=>e.open));
+  await page.goto(base+'cas-pratiques/',{waitUntil:'networkidle'});
+  await page.locator('#u12-cases button[data-case]').first().click();
+  await page.waitForURL(/outils\/\?cible=case-/);
+  assert.ok((await page.locator('#u12-notes').inputValue()).includes('CAS D’USAGE FICTIF'),'Cas transféré au studio');
+  await page.goto(base+'prompts/',{waitUntil:'networkidle'});
+  await page.locator('#v1-catalog [data-prompt]').first().click();
+  await page.waitForURL(/outils\/\?cible=prompt-/);
+  assert.ok(await page.locator('#v1-output').textContent(),'Prompt transmis au générateur');
   await page.close();
  }
 }finally{await browser.close();}
