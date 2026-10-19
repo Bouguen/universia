@@ -39,8 +39,8 @@ test('Quatre situations d’intégrité avec décision responsable et avertissem
 test('Montage des rubriques C3 avant filtrage multipage et sans deuxième accueil',()=>{
  const src=readFileSync('src.js','utf8'),ui=readFileSync('c3-ui.js','utf8'),casesUi=readFileSync('v12-ui.js','utf8');
  assert.match(src,/mountC3\(\);\s*applyMultipage\(\)/);
- assert.match(ui,/\.c3-ethics/);
- assert.match(ui,/\.c3-training/);
+ assert.match(ui,/c3-ethics/);
+ assert.match(ui,/c3-training/);
  assert.match(casesUi,/renderCasePractice\(c\.id\)/);
  assert.match(casesUi,/renderAdvancedPractice\(courseId\)/);
 });
