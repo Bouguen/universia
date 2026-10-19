@@ -1,7 +1,7 @@
 // Routes statiques multi-pages compatibles Vercel et GitHub Pages.
 export const sections = [
  {id:'accueil',name:'Accueil',slug:'',description:'Découvrez les grands usages de l’IA à l’université et choisissez votre parcours.'},
- {id:'bibliotheque',name:'Bibliothèque',slug:'bibliotheque',description:'24 fiches méthodologiques, exemples disciplinaires et précautions.'},
+ {id:'bibliotheque',name:'Bibliothèque',slug:'bibliotheque',description:'Des méthodes, exemples disciplinaires et repères pour enseigner, évaluer, rechercher et publier avec l’IA.'},
  {id:'ressources',name:'Ressources',slug:'ressources',description:'14 ressources pratiques, filtres et favoris.'},
  {id:'recherche',name:'Recherche globale',slug:'recherche',description:'Retrouvez rapidement les fiches, cours, prompts et générateurs.'},
  {id:'outils',name:'Générateurs',slug:'outils',description:'Atelier de création de prompts guidés et générateurs universitaires.'},
