@@ -1,0 +1,15 @@
+/* UNIVERS·IA : pages distinctes et accueil volontairement allégé. */
+html{scroll-padding-top:110px}
+.mp-intro{background:linear-gradient(110deg,#eaf9f4,#f8fbfa);border-bottom:1px solid #dcebe8;padding:40px 0 37px}
+.mp-crumb{display:inline-flex;font-size:.82rem;color:#156d65;text-decoration:underline;margin-bottom:17px;min-height:32px;align-items:center}
+.mp-intro .kicker{margin:0 0 10px}
+.mp-intro h1{font-size:clamp(32px,4.3vw,52px);line-height:1.12;margin:0 0 14px}
+.mp-intro p:not(.kicker){color:#486777;max-width:770px;line-height:1.65;margin:0}
+.head .links a[aria-current="page"]{background:#e3f7f1!important;color:#066f65!important}
+body[data-page="accueil"] .hero-grid{min-height:440px}
+body[data-page="accueil"] .hero-art{height:390px}
+body[data-page="accueil"] #parcours{padding-top:55px;padding-bottom:65px}
+body[data-page="accueil"] .constellation-section{padding-top:45px;padding-bottom:45px}
+body:not([data-page="accueil"]) #main{min-height:75vh}
+body:not([data-page="accueil"]) #main>.section:first-of-type{padding-top:45px}
+@media(max-width:650px){.mp-intro{padding:25px 0}.mp-intro h1{font-size:34px}body[data-page="accueil"] .hero-grid{min-height:420px}body[data-page="accueil"] #parcours{padding-top:38px}.head .links{gap:5px!important}}
