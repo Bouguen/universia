@@ -66,6 +66,28 @@ try{
    await page.goto(base+'bibliotheque/?categorie=Recherche#bibliotheque',{waitUntil:'networkidle'});
    assert.equal(await page.locator('#lotb-category').inputValue(),'Recherche','Le lien direct doit activer le filtre Recherche');
   }
+  if(name==='outils'){
+   assert.equal(await page.locator('#c3-tool-guide').count(),1,'C3 : guide générateur');
+   assert.ok((await page.locator('#c3-tool-guide').innerText()).includes('Situation de départ'));
+   await page.locator('#v1-tool').selectOption('review');
+   assert.ok((await page.locator('#c3-tool-guide').innerText()).includes('revue exploratoire'),'C3 : exemple adapté au générateur sélectionné');
+  }
+  if(name==='formations'){
+   assert.equal(await page.locator('.c3-training-card').count(),6,'C3 : six mises en pratique');
+   await page.locator('.c3-training-card').first().locator('summary').click();
+   assert.ok(await page.locator('.c3-training-card').first().locator('.c3-checks li').count()===3,'C3 : critères d’autocontrôle');
+   assert.ok(await page.locator('#u12-lesson .c3-advanced').count()===1,'C3 : atelier du parcours avancé');
+  }
+  if(name==='cas'){
+   assert.equal(await page.locator('.c3-case-detail').count(),15,'C3 : quinze cas enrichis');
+   await page.locator('.c3-case-detail').first().locator('summary').click();
+   assert.equal(await page.locator('.c3-case-detail').first().locator('li').count(),3,'C3 : trois étapes concrètes');
+  }
+  if(name==='integrite'){
+   assert.equal(await page.locator('.c3-ethics-card').count(),4,'C3 : quatre situations d’intégrité');
+   await page.locator('.c3-ethics-card').first().locator('summary').click();
+   assert.equal(await page.locator('.c3-ethics-card').first().locator('.c3-checks li').count(),3,'C3 : revue de décision');
+  }
   if(name==='ressources'){
    await page.locator('.resourcegrid .res').first().locator('summary').click();
    assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').first().isVisible());
@@ -103,7 +125,7 @@ try{
   await medium.screenshot({path:'screenshots/universia-accueil-980.png',fullPage:false});
   await medium.close();
  }
- for(const [name,slug] of [['accueil',''],['bibliotheque','bibliotheque/'],['outils','outils/'],['formations','formations/']]){
+ for(const [name,slug] of [['accueil',''],['bibliotheque','bibliotheque/'],['outils','outils/'],['formations','formations/'],['cas','cas-pratiques/'],['integrite','integrite/']]){
   const page=await browser.newPage({viewport:{width:390,height:844}});
   await page.goto(base+slug,{waitUntil:'networkidle'});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,name+' mobile : débordement');
