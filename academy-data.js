@@ -245,5 +245,251 @@ export const academyTracks = [
         "check": "FAIR signifie-t-il que toutes les données doivent être ouvertes ? Non."
       }
     ]
+  },
+  {
+    "id": "publication",
+    "title": "Rédaction et publication scientifiques",
+    "audience": "Chercheurs et équipes éditoriales",
+    "level": "Avancé",
+    "duration": "4 modules · 6 à 8 h",
+    "lessons": [
+      {
+        "title": "Rédiger sans inventer de preuves",
+        "concept": "Structurer un article à partir de données réellement obtenues. Séparer explicitement constats, interprétations, hypothèses et limites, et vérifier chaque référence avant de citer.",
+        "example": "Une analyse ne montre qu’une association sur un petit échantillon ; une conclusion générale sur tous les étudiants serait injustifiée.",
+        "exercise": "Rédiger introduction et discussion d’un résultat fictif limité en annotant les affirmations nécessitant une source.",
+        "correction": "Corrigé : contribution proportionnée, résultat non extrapolé, limites explicites et références primaires à rechercher.",
+        "check": "Un texte convaincant peut-il remplacer des résultats manquants ? Non."
+      },
+      {
+        "title": "Figures, tableaux et traçabilité",
+        "concept": "Toute figure doit être reliée à des données, des unités, une méthode de transformation et des légendes qui rendent la lecture possible. Vérifier les versions et éviter toute illustration assimilable à une expérience inexistante.",
+        "example": "Un graphique de latence omet les répétitions et les unités ; sa légende doit mentionner protocole, mesure et incertitude si disponible.",
+        "exercise": "Auditer un tableau simulé : sources, unités, dénominateurs, axes, valeurs manquantes et risques d’erreur.",
+        "correction": "Correction : six contrôles documentés, légende exacte, visualisation adaptée et absence d’ajout fictif.",
+        "check": "Une image générée de laboratoire peut-elle être présentée comme photographie expérimentale ? Non."
+      },
+      {
+        "title": "Choisir une revue et respecter les consignes",
+        "concept": "Comparer adéquation scientifique, exigences de données, politiques d’IA, frais et modalités d’évaluation à partir des sites officiels. Vérifier les assertions d’indexation à leurs bases.",
+        "example": "Une revue annonce une indexation : celle-ci doit être confirmée auprès de la base concernée et datée.",
+        "exercise": "Construire une grille de comparaison de trois revues sans inventer leurs classements ni leurs délais.",
+        "correction": "Corrigé : critères pondérés, sources consultées, coûts datés, décision fondée sur le périmètre.",
+        "check": "Un bon facteur de visibilité suffit-il à garantir l’adéquation éditoriale ? Non."
+      },
+      {
+        "title": "Répondre aux évaluateurs",
+        "concept": "Conserver chaque commentaire, expliquer les modifications effectivement effectuées et identifier leur emplacement. Traiter les demandes impossibles par une réponse argumentée sans feindre de nouveaux résultats.",
+        "example": "« Clarifier les critères » → section Méthodes complétée ; « ajouter 50 entretiens » → limite reconnue et analyse de sensibilité proposée si réalisable.",
+        "exercise": "Rédiger une réponse point par point à deux commentaires simulés et joindre une matrice de suivi.",
+        "correction": "Corrigé : ton factuel, changement précis, renvoi vérifié, limites honnêtes et aucune analyse fictive.",
+        "check": "Peut-on annoncer une modification prévue comme déjà réalisée ? Non."
+      }
+    ]
+  },
+  {
+    "id": "doctorat",
+    "title": "Doctorat, direction de recherche et intégrité",
+    "audience": "Doctorants, directeurs et encadrants",
+    "level": "Avancé",
+    "duration": "4 modules · 6 à 9 h",
+    "lessons": [
+      {
+        "title": "Construire un projet doctoral faisable",
+        "concept": "Définir problème, contribution, corpus légalement exploitable, moyens et calendrier. Fixer des jalons vérifiables et prévoir des risques méthodologiques plutôt qu’une feuille de route irréaliste.",
+        "example": "Projet de classification de textes : jalon corpus autorisé, jalon annotation contrôlée, jalon ligne de base et jalon rédaction.",
+        "exercise": "Définir quatre livrables datés et deux scénarios de mitigation des risques.",
+        "correction": "Correction : ressources et responsabilités identifiées, jalons vérifiables, risques explicites.",
+        "check": "Un calendrier produit par IA tient-il lieu d’accord d’encadrement ? Non."
+      },
+      {
+        "title": "Revue de littérature doctorale critique",
+        "concept": "Une revue de thèse doit expliciter les courants théoriques, différends méthodologiques et lacunes démontrables. Ne pas transformer l’absence de résultats à une requête limitée en absence de travaux.",
+        "example": "Deux études de domaines voisins ne justifient pas automatiquement une lacune ; examiner bases, langues et synonymes.",
+        "exercise": "Créer une matrice dix lectures réellement consultées : théorie, méthode, résultat, limite, apport au projet.",
+        "correction": "Corrigé : références authentiques, points de contradiction, contexte de validité, notes de lecture traçables.",
+        "check": "Une IA qui propose une « lacune » garantit-elle sa nouveauté scientifique ? Non."
+      },
+      {
+        "title": "Méthodes, encadrement et décisions",
+        "concept": "Tenir un registre de réunion où les recommandations, arbitrages et responsables sont distingués. Une IA peut structurer le compte rendu, mais ne décide pas de la validité scientifique.",
+        "example": "Une proposition de nouvelle variable faite par un assistant est inscrite comme hypothèse à discuter, pas comme décision du directeur.",
+        "exercise": "Préparer un ordre du jour d’encadrement et un tableau décisions–preuves–échéances.",
+        "correction": "Correction : décisions prises par des personnes identifiables, alternatives évaluées, étapes datées.",
+        "check": "Le suivi de progression automatique remplace-t-il le jugement d’un jury ? Non."
+      },
+      {
+        "title": "Rédiger et soutenir sans survente",
+        "concept": "La thèse doit distinguer contribution, limites, reproductibilité et pistes futures. Préparer la soutenance par des questions de contradiction plutôt que par un script de réponses stéréotypées.",
+        "example": "« Pourquoi votre protocole n’exclut-il pas ce biais ? » doit appeler une réponse basée sur les limites réelles du travail.",
+        "exercise": "Écrire cinq objections possibles à un résultat fictif et une réponse étayée pour chacune.",
+        "correction": "Corrigé : reconnaissance de l’incertitude, renvoi aux figures et données réellement disponibles, éthique des contributions.",
+        "check": "La qualité d’une présentation suffit-elle à démontrer une contribution originale ? Non."
+      }
+    ]
+  },
+  {
+    "id": "ethique",
+    "title": "Gouvernance, confidentialité et responsabilité",
+    "audience": "Responsables, chercheurs et étudiants",
+    "level": "Intermédiaire",
+    "duration": "4 modules · 5 à 7 h",
+    "lessons": [
+      {
+        "title": "Évaluer les risques avant l’usage",
+        "concept": "Classer les activités selon impacts sur les personnes, confidentialité, contexte juridique, vérifiabilité et alternatives disponibles. Définir qui autorise et contrôle les usages.",
+        "example": "La préparation de questions fictives est moins sensible que l’analyse de dossiers étudiants ou de données médicales.",
+        "exercise": "Construire une matrice de risques de quatre cas d’usage universitaires.",
+        "correction": "Correction : catégorie de données, finalité, prestataire, risque, mesure de protection et validation.",
+        "check": "Un abonnement à un outil implique-t-il une autorisation institutionnelle ? Non."
+      },
+      {
+        "title": "Données et confidentialité",
+        "concept": "Réduire les données transférées, étudier finalité et durée de traitement, respecter les autorisations et contractualisations requises. Une pseudonymisation ne garantit pas l’impossibilité d’identifier les personnes.",
+        "example": "Supprimer un nom d’un verbatim n’efface pas nécessairement les détails de lieu, date et situation qui identifient le participant.",
+        "exercise": "Analyser un scénario de verbatim fictif et proposer des alternatives sûres.",
+        "correction": "Corrigé : minimisation, données fictives, contrôles contractuels, autorisation et vérification des identifiants indirects.",
+        "check": "Un document sans nom est-il nécessairement anonyme ? Non."
+      },
+      {
+        "title": "Intégrité, attribution et déclaration",
+        "concept": "L’auteur humain assume les choix scientifiques, la qualité des sources et la déclaration d’usage requise. Les outils d’IA ne doivent pas être présentés comme coauteurs responsables.",
+        "example": "La reformulation d’une discussion doit être déclarée selon les exigences de la revue ; le texte reste vérifié par les auteurs.",
+        "exercise": "Rédiger une déclaration d’usage limitée aux opérations réellement effectuées.",
+        "correction": "Corrigé : nom de l’outil si requis, période, tâche, données, contrôle, responsabilité et limites.",
+        "check": "Une formule « tout a été vérifié » sans preuve est-elle acceptable ? Non."
+      },
+      {
+        "title": "Élaborer une politique locale",
+        "concept": "Une politique doit distinguer usages autorisés, usages sous condition, exclusions, assistance technique et procédure de contestation. Prévoir accessibilité, formation, actualisation et validation institutionnelle.",
+        "example": "Charte d’un département : document de travail soumis aux enseignants, étudiants, juristes et services informatiques, puis validé par les instances.",
+        "exercise": "Proposer un plan de charte avec rôles, données, évaluations, incidents et comité de révision.",
+        "correction": "Corrigé : champ d’application, décisions traçables, participation des parties concernées, aucune portée juridique revendiquée avant adoption.",
+        "check": "Une charte rédigée automatiquement devient-elle opposable dès sa publication sur un portail ? Non."
+      }
+    ]
+  },
+  {
+    "id": "accessibilite",
+    "title": "Accessibilité, inclusion et équité numérique",
+    "audience": "Enseignants et concepteurs de ressources",
+    "level": "Intermédiaire",
+    "duration": "4 modules · 5 à 7 h",
+    "lessons": [
+      {
+        "title": "Accessibilité des contenus",
+        "concept": "Utiliser des titres hiérarchiques, tableaux de données correctement structurés, contrastes adaptés et textes alternatifs qui transmettent l’information, pas uniquement la forme.",
+        "example": "« Image d’un graphique » est insuffisant si la figure compare des valeurs et met en évidence une tendance.",
+        "exercise": "Réécrire l’alternative textuelle d’un graphique fictif avec unité, relation et conclusion prudente.",
+        "correction": "Correction : sens du graphique, échelle, étiquettes, tendance et absence d’inférence non démontrée.",
+        "check": "Une alternative textuelle automatiquement proposée est-elle forcément correcte ? Non."
+      },
+      {
+        "title": "Navigation et interaction accessibles",
+        "concept": "Toutes les fonctions doivent rester utilisables au clavier, avec ordre logique de focus, messages de statut compréhensibles et absence de piège de navigation. Tester réellement les composants dynamiques.",
+        "example": "Un menu déroulant s’ouvre à la souris mais ne se ferme pas au clavier : corriger l’interaction plutôt que masquer le problème.",
+        "exercise": "Construire une checklist de contrôle d’un générateur avec quatre actions clavier.",
+        "correction": "Corrigé : Tab, Entrée, Échap, annonce de résultat, focus après rechargement, contraste et zoom.",
+        "check": "La réussite d’un test automatique suffit-elle à certifier WCAG 2.2 AA ? Non."
+      },
+      {
+        "title": "Alternatives pédagogiques équitables",
+        "concept": "Les étudiants ne disposent pas tous des mêmes appareils ou abonnements. Prévoir parcours sans compte commercial, formats exportables et soutien aux prérequis.",
+        "example": "Un TD exigeant un outil payant est remplacé par un jeu de sorties fourni par l’enseignant et une grille de critique de ces sorties.",
+        "exercise": "Transformer une activité dépendante d’un service tiers en une alternative gratuite et hors ligne.",
+        "correction": "Corrigé : mêmes acquis, moyens équivalents, durée raisonnable, traitement de l’accessibilité.",
+        "check": "Un lien libre d’accès garantit-il que tous les étudiants pourront utiliser le service ? Non."
+      },
+      {
+        "title": "Évaluer l’équité d’un dispositif",
+        "concept": "Comparer les effets possibles sur différents publics sans réduire l’analyse à des moyennes de satisfaction. Documenter les obstacles et prévoir un canal de signalement.",
+        "example": "Un taux de participation global élevé masque une sous-participation de certains étudiants privés de connexion fiable.",
+        "exercise": "Proposer une grille d’évaluation comprenant accessibilité, coûts, données, participation et recours.",
+        "correction": "Corrigé : cinq critères, indicateurs observables, décisions de remédiation et collecte proportionnée.",
+        "check": "L’absence de plainte prouve-t-elle l’absence d’obstacle ? Non."
+      }
+    ]
+  },
+  {
+    "id": "ingenierie",
+    "title": "IA pour l’ingénierie, le code et les systèmes",
+    "audience": "Élèves-ingénieurs et enseignants scientifiques",
+    "level": "Avancé",
+    "duration": "4 modules · 6 à 9 h",
+    "lessons": [
+      {
+        "title": "Concevoir un protocole technique",
+        "concept": "Définir une spécification, des invariants, les conditions d’entrée et les critères d’acceptation avant de demander du code. Un modèle peut produire des programmes plausibles mais incorrects.",
+        "example": "Une API de bibliothèque doit refuser l’accès aux dossiers d’autres utilisateurs ; cette exigence apparaît dans les tests d’autorisation.",
+        "exercise": "Écrire la spécification d’un endpoint fictif avec cinq conditions d’acceptation.",
+        "correction": "Corrigé : entrées, sorties, contrôle d’accès, cas limites et tests négatifs reproductibles.",
+        "check": "Un programme qui compile est-il nécessairement correct et sécurisé ? Non."
+      },
+      {
+        "title": "Tester le code généré",
+        "concept": "Séparer relecture statique, tests automatisés, cas limites et essais sur environnement autorisé. Ne jamais exécuter aveuglément du code inconnu sur un poste sensible.",
+        "example": "Une fonction de tri paraît correcte sur cinq nombres, mais échoue sur doublons, valeurs manquantes ou entrées vides.",
+        "exercise": "Concevoir six tests d’une fonction fictive : nominal, vide, doublon, valeur aberrante, format et performance.",
+        "correction": "Corrigé : assertions explicites, résultats attendus, contrôle humain et documentation des échecs.",
+        "check": "Des tests générés par le même modèle garantissent-ils l’exhaustivité ? Non."
+      },
+      {
+        "title": "Analyser performances et mesures",
+        "concept": "Comparer performances avec matériel, versions logicielles, charge et répétitions documentées. Les gains doivent être mesurés et non attribués à un prompt ou à une optimisation supposée.",
+        "example": "Un test de latence donne une médiane mais pas le nombre de répétitions ; il faut préciser protocole et variabilité avant de conclure.",
+        "exercise": "Préparer un cahier de benchmark avec unités, conditions et méthodes de synthèse.",
+        "correction": "Corrigé : durée, équipement, configurations, n répétitions, dispersion, biais possibles et limites.",
+        "check": "Peut-on reprendre sans vérification un gain de performance annoncé par un assistant ? Non."
+      },
+      {
+        "title": "Reproductibilité et sûreté",
+        "concept": "Versionner scripts et dépendances, tracer licences et provenance, protéger les secrets et prévoir des contrôles de sécurité. Un dépôt public ne doit jamais contenir des clés API ou des données de tiers.",
+        "example": "Un fichier de configuration contient un jeton ; le remplacer par une variable d’environnement et révoquer le jeton exposé.",
+        "exercise": "Écrire un README d’installation et une checklist de diffusion d’un petit prototype.",
+        "correction": "Corrigé : versions, commandes reproductibles, échantillons fictifs, absence de secrets et stratégie de test.",
+        "check": "Un projet de démonstration peut-il diffuser des identifiants réels ? Non."
+      }
+    ]
+  },
+  {
+    "id": "disciplines",
+    "title": "Adapter l’IA aux disciplines universitaires",
+    "audience": "Enseignants de toutes disciplines",
+    "level": "Intermédiaire",
+    "duration": "4 modules · 6 à 8 h",
+    "lessons": [
+      {
+        "title": "Ingénierie, sciences et santé",
+        "concept": "Les sciences requièrent protocoles, données, unités et vérifications expérimentales. En santé, distinguer exercice académique et décision clinique, soumise à des garanties renforcées.",
+        "example": "Un assistant explique un protocole fictif ; les paramètres expérimentaux réels et les recommandations cliniques ne peuvent être inventés.",
+        "exercise": "Créer un exercice d’analyse de protocole avec contrôles, variable, résultat fictif et limites.",
+        "correction": "Corrigé : objectifs, contrôle expérimental, analyse des biais, sécurité et prudence clinique.",
+        "check": "Une explication scientifique plausible permet-elle une prescription thérapeutique ? Non."
+      },
+      {
+        "title": "Sciences humaines et sociales",
+        "concept": "Distinguer sources empiriques, cadres théoriques et interprétations. Un codage proposé par IA doit être confronté aux extraits réels et aux contre-exemples.",
+        "example": "Une catégorisation de discours plausible masque une opinion minoritaire ; le codebook doit inclure les cas divergents.",
+        "exercise": "Construire une fiche critique d’analyse d’entretien fictif avec codes et contre-exemples.",
+        "correction": "Corrigé : unités d’analyse, critères de codage, désaccords, confidentialité et limites d’interprétation.",
+        "check": "Peut-on fabriquer un verbatim « représentatif » et le citer comme donnée d’enquête ? Non."
+      },
+      {
+        "title": "Droit, économie et gestion",
+        "concept": "En droit, vérifier textes et jurisprudence avec date et juridiction ; en gestion, documenter hypothèses économiques et scénarios. La fluidité d’un raisonnement n’atteste pas sa validité.",
+        "example": "Un texte de loi inventé rend une note juridique inutilisable ; une estimation économique sans paramètres est un scénario, pas un résultat observé.",
+        "exercise": "Comparer une argumentation juridique et une décision stratégique fictives selon leurs preuves requises.",
+        "correction": "Corrigé : sources juridiques primaires, hypothèses de gestion, incertitudes et impossibilité de conclure sans données.",
+        "check": "Une référence de jurisprudence produite par IA peut-elle être citée sans consultation ? Non."
+      },
+      {
+        "title": "Lettres, langues, arts et communication",
+        "concept": "Ces disciplines exigent attention au texte, au contexte historique et aux droits de réutilisation. L’IA peut soutenir comparaison et brainstorming mais ne remplace pas l’analyse des sources primaires.",
+        "example": "Une traduction proposée modifie le registre : comparer deux variantes en citant le passage original licite plutôt que juger au seul style.",
+        "exercise": "Créer une activité de traduction ou d’analyse d’œuvre avec deux interprétations argumentées.",
+        "correction": "Corrigé : preuve dans le matériau source, distinction interprétation / fait, attribution et respect des droits.",
+        "check": "Une image ou traduction générée est-elle automatiquement libre de tous droits ? Non."
+      }
+    ]
   }
 ];
