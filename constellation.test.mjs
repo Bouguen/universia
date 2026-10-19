@@ -20,11 +20,13 @@ test('nœuds et liens dirigés vers des sections existantes',()=>{
 test('une seule carte avec vue liste et navigation accessible',()=>{
  const ui=readFileSync('constellation-ui.js','utf8');
  const css=readFileSync('constellation.css','utf8');
- assert.match(ui,/aria-label="Accès visuels aux contenus"/);
+ assert.match(ui,/aria-label="Raccourcis vers les pages du portail"/);
  assert.match(ui,/aria-pressed="true"/);
  assert.match(ui,/data-layout="network"/);
  assert.match(ui,/mouseenter/);
  assert.match(ui,/focus/);
+ assert.match(ui,/illustration.replaceWith\(host\)/);
+ assert.match(ui,/id='constellation'/);
  assert.match(css,/prefers-reduced-motion:reduce/);
- assert.match(css,/max-width:950px/);
+ assert.match(css,/max-width:670px/);
 });
