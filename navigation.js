@@ -1,6 +1,7 @@
 // Barre de navigation unique, visible et adaptable sur deux lignes.
 export const navigationItems=[
- {href:'#parcours',label:'Parcours'},
+ {href:'#constellation',label:'Explorer'},
+ {href:'#parcours',label:'Parcours'}
  {href:'#ressources',label:'Ressources'},
  {href:'#recherche-globale',label:'Recherche'},
  {href:'#bibliotheque',label:'Bibliothèque'},
