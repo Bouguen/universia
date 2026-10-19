@@ -69,6 +69,10 @@ export function applyMultipage(){
   const filter=document.querySelector('#ressources [data-filter="'+CSS.escape(theme||'')+'"]');
   if(filter)filter.click();
  }
+ if(page==='ressources'){
+  const name=new URLSearchParams(window.location.search).get('ressource');
+  if(name){const item=[...document.querySelectorAll('#results [data-resource]')].find(x=>x.dataset.resource===name);if(item){const d=item.querySelector('details');if(d)d.open=true;item.scrollIntoView({block:'start'});item.querySelector('summary')?.focus();}}
+ }
  if(page==='bibliotheque'){
   const category=new URLSearchParams(window.location.search).get('categorie');
   const select=document.querySelector('#lotb-category');
