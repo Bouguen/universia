@@ -21,3 +21,9 @@
 .deep-guide-checklist li{padding:3px 0}
 .deep-guide-note{font-size:.78rem;color:#59716f;border-top:1px solid #e3eeeb;padding-top:12px}
 @media(max-width:670px){.deep-guide{padding:11px}.deep-guide-prompt{padding:10px}}
+
+/* Ressources C2 : un mini-cas concret et une passerelle vers l'atelier approfondi. */
+.resource-application{background:#f2f9f7;border:1px solid #cce2db;border-radius:9px;margin-top:15px;padding:13px;line-height:1.55}
+.resource-application h4{margin:0 0 8px;color:#164b47;font-size:.95rem}
+.resource-application p{margin:9px 0}
+.secondary-resource{margin-top:6px;background:#e1f1ed;border:1px solid #b2d5cb;color:#07594f}
