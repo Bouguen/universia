@@ -14,7 +14,7 @@ export function mountConstellation(){
    a.addEventListener('focus',()=>{help.textContent=node.description;stage.dataset.active=node.id;});
    a.addEventListener('mouseleave',()=>{stage.dataset.active='';help.textContent='Choisissez un thème pour accéder à son contenu.';});
    a.addEventListener('blur',()=>{stage.dataset.active='';});
-   a.addEventListener('click',()=>{if(node.category){try{sessionStorage.setItem('universia-constellation-category',node.category)}catch{}}});
+   a.addEventListener('click',()=>{if(node.category){try{sessionStorage.setItem('universia-constellation-category',node.category)}catch{}const category=document.querySelector('#lotb-category');if(category){category.value=node.category;category.dispatchEvent(new Event('change',{bubbles:true}));}}});
  }
  for(const button of host.querySelectorAll('[data-view]')){
    button.addEventListener('click',()=>{stage.dataset.layout=button.dataset.view;for(const b of host.querySelectorAll('[data-view]'))b.setAttribute('aria-pressed',String(b===button));});
