@@ -15,7 +15,7 @@ try{
   const main=await page.locator('#main').count();
   console.log(name, 'main',main,'errors',errors,'title',await page.title());
   assert.equal(main,1,name+': contenu principal absent ; erreurs: '+errors.join(' | '));
-  for(const selector of ['#studio','#bibliotheque','#recherche-globale','#portal-query','#portal-results','#lotb-search','#lotb-results','#site-nav','#u12-course-tabs','#u12-result']){
+  for(const selector of ['#studio','#constellation','#bibliotheque','#recherche-globale','#portal-query','#portal-results','#lotb-search','#lotb-results','#site-nav','#u12-course-tabs','#u12-result']){
     assert.equal(await page.locator(selector).count(),1,name+': élément manquant '+selector);
   }
   assert.equal(await page.locator('#menu-toggle').count(),0,'Le menu déroulant doit être supprimé');
@@ -26,6 +26,14 @@ try{
   assert.equal(horizontalOverflow,false,'Pas de débordement horizontal');
   await page.locator('#portal-query').fill('revue');
   assert.ok((await page.locator('.portal-result').count())>0,'Recherche globale : aucun résultat');
+  assert.equal(await page.locator('.constellation-node').count(),12,'Douze destinations de la constellation');
+  const scientific=page.locator('.constellation-node[data-node="recherche"]');
+  await scientific.click();
+  assert.equal(await page.locator('#lotb-category').inputValue(),'Recherche','Filtre scientifique à appliquer');
+  if(name==='desktop'){
+    await page.locator('.constellation-controls [data-view="list"]').click();
+    assert.equal(await page.locator('.constellation-stage').getAttribute('data-layout'),'list');
+  }
   const card=page.locator('.resourcegrid .res').first();
   await card.locator('summary').click();
   assert.ok(await card.locator('.res-action').isVisible(),'Les fiches de ressources doivent être cliquables');
