@@ -10,7 +10,8 @@ export const navigationItems=[
  {href:'#cas-academiques',label:'Cas pratiques'},
  {href:'#formations-approfondies',label:'Formations'},
  {href:'#modules',label:'Ateliers'},
- {href:'#promptotheque',label:'Promptothèque'}
+ {href:'#promptotheque',label:'Promptothèque'},
+ {href:'#skills',label:'Skills IA'}
 ];
 export function navigationMarkup(){return '<nav id="site-nav" class="links" aria-label="Navigation principale">'+navigationItems.map(({href,label})=>'<a href="'+href+'">'+label+'</a>').join('')+'</nav>';}
 export function initNavigation(){/* Les ancres natives conservent navigation clavier et accès direct. */}

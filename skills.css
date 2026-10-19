@@ -1,0 +1,54 @@
+/* UNIVERS·IA — Bibliothèque Agent Skills / atelier */
+.skills-section{scroll-margin-top:115px}
+.sk-intro{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 20px}
+.sk-intro>div{background:#edf7f4;border:1px solid #d7e8e1;border-radius:13px;padding:19px}
+.sk-intro strong{color:#0a5d54}
+.sk-intro p{font-size:.88rem;color:#506d69;line-height:1.6;margin:8px 0 0}
+.sk-safety{padding:15px 18px;margin:15px 0 25px;border:1px solid #cedfe4;background:#f4f8fb;border-radius:10px;color:#315368;font-size:.85rem;line-height:1.65}
+.sk-toolbar{display:grid;grid-template-columns:minmax(240px,2fr) minmax(200px,1fr) minmax(145px,.7fr);gap:16px;margin:27px 0 14px}
+.sk-toolbar label,.sk-form label{display:flex;flex-direction:column;gap:8px;font-size:.87rem;font-weight:750;color:#284a50}
+.sk-toolbar input,.sk-toolbar select,.sk-form input,.sk-form textarea{min-width:0;width:100%;padding:13px 12px;background:#fff;border:1px solid #bed3d4;border-radius:9px;font:inherit;color:#173743}
+.sk-toolbar input:focus,.sk-toolbar select:focus,.sk-form input:focus,.sk-form textarea:focus{outline:3px solid #8edbd0;outline-offset:1px}
+.sk-count,.sk-meta{font-size:.8rem;color:#5b7782;line-height:1.6}
+.sk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.sk-card{display:flex;flex-direction:column;gap:12px;min-height:220px;padding:22px;background:#fff;border:1px solid #dbe7e4;border-radius:14px;box-shadow:0 3px 18px #082f2210}
+.sk-card-heading{display:flex;align-items:center;gap:10px}
+.sk-card-heading>span{font-size:25px}
+.sk-card-heading small{color:#477468;font-size:.76rem}
+.sk-card h3{font:800 1rem/1.4 Manrope,sans-serif;letter-spacing:-.4px;margin:0}
+.sk-card p{color:#5f747d;line-height:1.6;font-size:.82rem;margin:0;flex:1}
+.sk-card-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid #e5efea;padding-top:14px}
+.sk-card-footer small{color:#60777c;font-size:.72rem}
+.sk-card-footer a{color:#096d61;text-decoration:underline;text-underline-offset:3px;font-weight:750;font-size:.82rem}
+.sk-card-footer a:hover,.sk-back:hover,.sk-learn a:hover{color:#07473e}
+.sk-empty{grid-column:1/-1;padding:35px;text-align:center;background:#f7fbf9;color:#456878;border-radius:12px}
+.sk-detail{margin:30px 0 25px;padding:26px;border:1px solid #b8ded2;border-radius:18px;background:#f4faf7;scroll-margin-top:115px}
+.sk-detail>h3{font-size:1.8rem;margin:12px 0}
+.sk-detail>p{color:#587079;line-height:1.6}
+.sk-detail .kicker{margin:14px 0}
+.sk-detail-cols{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:30px;margin-top:24px}
+.sk-detail-cols h4{margin:20px 0 10px}
+.sk-detail-cols li{line-height:1.7;margin:7px 0;font-size:.91rem}
+.sk-detail-cols>div{min-width:0}
+.sk-back{color:#076a57;font-weight:750;text-decoration:underline;font-size:.85rem}
+.sk-pre-header{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#12394a;color:#e5f8f4;padding:12px 15px;border-radius:11px 11px 0 0;flex-wrap:wrap}
+.sk-pre-header small{font-size:.75rem;color:#abd2d3;overflow-wrap:anywhere}
+#skills-markdown,#sk-preview{font:12px/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;background:#0e2b38;color:#e3f0ee;white-space:pre-wrap;overflow-wrap:anywhere;overflow:auto;max-height:480px;min-height:200px;margin:0;border-radius:0 0 11px 11px;padding:18px}
+.sk-buttons{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0}
+.sk-buttons .btn{cursor:pointer}
+.sk-buttons button:disabled{opacity:.45;cursor:not-allowed}
+.sk-feedback{font-size:.83rem;color:#0d6456;line-height:1.55;min-height:24px}
+.sk-learn{margin:38px 0 5px;padding:24px 28px;border-radius:15px;border:1px solid #dce9e8;background:#f9fbfb}
+.sk-learn h3{margin:0 0 14px}
+.sk-learn p{font-size:.88rem;line-height:1.8;color:#4b6772}
+.sk-learn a{color:#0b6c62;text-decoration:underline;margin-right:20px;font-size:.85rem;display:inline-block;line-height:2}
+.sk-builder{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:24px}
+.sk-form,.sk-builder-output{padding:25px;border-radius:15px;background:#fff;border:1px solid #d7e5e3;min-width:0}
+.sk-form{display:flex;flex-direction:column;gap:17px}
+.sk-form textarea{resize:vertical;line-height:1.55}
+.sk-form .btn{align-self:flex-start}
+.sk-builder-output{align-self:start}
+#sk-preview{min-height:530px;max-height:740px}
+#skills-atelier{scroll-margin-top:115px}
+@media(max-width:950px){.sk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sk-toolbar{grid-template-columns:1fr 1fr}.sk-toolbar label:first-child{grid-column:1/-1}.sk-detail-cols,.sk-builder{grid-template-columns:1fr}}
+@media(max-width:650px){.sk-grid,.sk-intro,.sk-toolbar{grid-template-columns:1fr}.sk-toolbar label:first-child{grid-column:auto}.sk-detail{padding:17px}.sk-learn{padding:18px}.sk-form,.sk-builder-output{padding:16px}.sk-buttons .btn{width:100%}.sk-detail>h3{font-size:1.35rem}}

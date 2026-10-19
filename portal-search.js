@@ -1,4 +1,5 @@
 import {resources,prompts,themes} from './data.js';
+import {academicSkills} from './skills-data.js';
 import {academicTemplates,academicPrompts,courses} from './v1-data.js';
 import {lessons} from './v11-data.js';
 import {workflows,cases,advancedCourses} from './v12-data.js';
@@ -14,7 +15,8 @@ export const portalIndex=[
  ...lessons.map(x=>({id:'workshop-'+x.id,type:'Formations',title:x.title,desc:x.category,href:'#modules',search:x.title+' '+x.category})),
  ...workflows.map(x=>({id:'workflow-'+x.id,type:'Générateurs',title:x.name,desc:x.goal,href:'#studio',search:x.name+' '+x.area+' '+x.goal})),
  ...cases.map(x=>({id:'case-'+x.id,type:'Cas pratiques',title:x.title,desc:x.context,href:'#cas-academiques',search:x.title+' '+x.context+' '+x.expected})),
- ...advancedCourses.map(x=>({id:'advanced-'+x.id,type:'Formations',title:x.title,desc:x.audience,href:'#formations-approfondies',search:x.title+' '+x.audience}))
+ ...advancedCourses.map(x=>({id:'advanced-'+x.id,type:'Formations',title:x.title,desc:x.audience,href:'#formations-approfondies',search:x.title+' '+x.audience})),
+ ...academicSkills.map(x=>({id:'skill-'+x.id,type:'Skills IA',title:x.title,desc:x.goal,href:'#skills-detail',params:'skill='+encodeURIComponent(x.id),search:x.title+' '+x.goal+' '+x.category+' '+x.steps.join(' ')}))
 ];
 export const portalTypes=['Tous',...new Set(portalIndex.map(x=>x.type))];
 export function searchPortal({query='',type='Tous'}={}){const q=normalizeSearch(query);return portalIndex.filter(x=>(type==='Tous'||type===x.type)&&(!q||normalizeSearch(x.search).includes(q)));}
