@@ -68,6 +68,17 @@ try{
   if(name==='recherche'){
    await page.locator('#portal-query').fill('revue');
    assert.ok(await page.locator('.portal-result').count()>0);
+   await page.locator('#portal-query').fill('');
+   assert.equal(await page.locator('.portal-result').count(),12,'C1 : douze résultats par page');
+   await page.locator('#portal-pages [data-page="next"]').click();
+   assert.ok((await page.locator('#portal-count').textContent()).includes('Page 2'),'C1 : pagination');
+   await page.locator('#portal-query').fill('Vérifier des références bibliographiques');
+   const result=page.locator('.portal-result').filter({hasText:'Vérifier des références bibliographiques'}).first();
+   assert.ok(await result.count()>0,'C1 : fiche exacte repérable');
+   await result.click();
+   await page.waitForURL(/bibliotheque\/\?fiche=/);
+   const selected=page.locator('.lotb-card[open][data-fiche]');
+   assert.equal(await selected.count(),1,'C1 : bonne fiche dépliée');
   }
   await page.screenshot({path:'screenshots/universia-'+name+'.png',fullPage:false});
   console.log(name,': OK');
