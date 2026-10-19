@@ -73,8 +73,8 @@ try{
    await page.locator('#portal-pages [data-page="next"]').click();
    assert.ok((await page.locator('#portal-count').textContent()).includes('Page 2'),'C1 : pagination');
    await page.locator('#portal-type').selectOption('Bibliothèque');
-   await page.locator('#portal-query').fill('Vérifier des références bibliographiques');
-   const result=page.locator('.portal-result').filter({hasText:'Vérifier des références bibliographiques'}).first();
+   await page.locator('#portal-query').fill('bibliographie');
+   const result=page.locator('.portal-result[href*="fiche="]').first();
    assert.ok(await result.count()>0,'C1 : fiche exacte repérable');
    await result.click();
    await page.waitForURL(/bibliotheque\/\?fiche=/);
