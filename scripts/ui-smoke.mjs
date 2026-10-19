@@ -48,6 +48,15 @@ try{
    const shortcut=page.locator('.hero .actions a[href="#constellation"]');assert.equal(await shortcut.count(),1);
    await shortcut.click();assert.equal(new URL(page.url()).hash,'#constellation');
   }
+  if(['outils','formations','cas','integrite'].includes(name)){
+   assert.equal(await page.locator('#atelier-approfondi').count(),1,'C3 : module sur la bonne page');
+   assert.ok((await page.locator('.c3-card').count())>=4,'C3 : fiches disponibles');
+   await page.locator('.c3-card').first().locator('summary').click();
+   assert.ok(await page.locator('.c3-card').first().locator('.c3-body').isVisible(),'C3 : contenu ouvert');
+  }
+  if(name==='accueil'||name==='recherche'){
+   assert.equal(await page.locator('#atelier-approfondi').count(),0,'C3 : pas de module hors contexte');
+  }
   if(name==='bibliotheque'){
    assert.equal(await page.locator('.lotb-card').count(),24);
    assert.equal(await page.locator('.lotb-card .deep-guide').count(),24,'C2 : 24 ateliers rendus');
