@@ -27,3 +27,11 @@
 .resource-application h4{margin:0 0 8px;color:#164b47;font-size:.95rem}
 .resource-application p{margin:9px 0}
 .secondary-resource{margin-top:6px;background:#e1f1ed;border:1px solid #b2d5cb;color:#07594f}
+
+/* Une fiche approfondie ouverte occupe toute la largeur de la bibliothèque. */
+.lotb-grid>.lotb-card[open]{grid-column:1/-1;scroll-margin-top:115px}
+.lotb-grid>.lotb-card[open] summary{min-height:0;display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px}
+.lotb-grid>.lotb-card[open] summary strong{font-size:1.25rem}
+.lotb-grid>.lotb-card[open] .lotb-body{max-width:1100px;margin:0 auto;box-sizing:border-box;width:100%;padding:24px}
+.lotb-grid>.lotb-card[open] .deep-guide-prompt textarea{max-width:100%;min-height:145px}
+@media(max-width:670px){.lotb-grid>.lotb-card[open] .lotb-body{padding:14px}.lotb-grid>.lotb-card[open] summary{display:grid;gap:7px}}
