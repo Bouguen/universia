@@ -18,6 +18,14 @@ try{
   for(const selector of ['#studio','#constellation','#bibliotheque','#recherche-globale','#portal-query','#portal-results','#lotb-search','#lotb-results','#site-nav','#u12-course-tabs','#u12-result']){
     assert.equal(await page.locator(selector).count(),1,name+': élément manquant '+selector);
   }
+  const sectionOrder=await page.evaluate(()=>[...document.querySelectorAll('#accueil,#constellation,#recherche-globale,#bibliotheque')].map(el=>el.id));
+  assert.deepEqual(sectionOrder,['accueil','constellation','recherche-globale','bibliotheque'],name+': la constellation doit être immédiatement après la page d’accueil');
+  const shortcut=page.locator('.hero .actions a[href="#constellation"]');
+  assert.equal(await shortcut.count(),1,name+': raccourci Constellation absent de l’accueil');
+  await shortcut.click();
+  assert.equal(new URL(page.url()).hash,'#constellation',name+': raccourci Constellation non fonctionnel');
+  await page.locator('#constellation').scrollIntoViewIfNeeded();
+  await page.screenshot({path:'screenshots/universia-'+name+'-constellation.png',fullPage:false});
   assert.equal(await page.locator('#menu-toggle').count(),0,'Le menu déroulant doit être supprimé');
   const nav=page.locator('#site-nav');
   assert.ok(await nav.isVisible(),'La bannière doit rester visible');
