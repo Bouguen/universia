@@ -7,7 +7,7 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
     "preview": "vite preview --host 0.0.0.0",
-    "test": "node --test v12.test.mjs navigation.test.mjs lot-b.test.mjs portal-search.test.mjs constellation.test.mjs multi-page.test.mjs && node verify.mjs"
+    "test": "node --test v12.test.mjs navigation.test.mjs lot-b.test.mjs portal-search.test.mjs constellation.test.mjs multi-page.test.mjs c1.test.mjs && node verify.mjs"
   },
   "devDependencies": {
     "vite": "^6.2.6"
