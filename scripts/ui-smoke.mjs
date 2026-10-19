@@ -3,48 +3,65 @@ import {mkdirSync} from 'node:fs';
 import assert from 'node:assert/strict';
 mkdirSync('screenshots',{recursive:true});
 const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox']});
+const base=(process.env.UI_URL||'http://127.0.0.1:4173/').replace(/\/?$/,'/');
+const checks=[
+ ['accueil','', ['#accueil','#constellation','#parcours'],['#bibliotheque','#studio','#recherche-globale']],
+ ['bibliotheque','bibliotheque/',['#bibliotheque','#lotb-search','#lotb-results'],['#constellation','#atelier']],
+ ['ressources','ressources/',['#ressources','.resourcegrid'],['#constellation','#studio']],
+ ['recherche','recherche/',['#recherche-globale','#portal-query','#portal-results'],['#constellation','#ressources']],
+ ['outils','outils/',['#outils','#studio','#v1-create','#u12-compose'],['#promptotheque','#formations']],
+ ['prompts','prompts/',['#atelier','#promptotheque','#generate','#v1-catalog'],['#studio','#formations']],
+ ['formations','formations/',['#formations','#modules','#formations-approfondies'],['#studio','#atelier']],
+ ['cas','cas-pratiques/',['#cas-academiques','#u12-cases'],['#studio','#formations-approfondies']],
+ ['integrite','integrite/',['#reperes','.sources'],['#studio','#atelier']]
+];
 try{
- for(const [name,width,height] of [['desktop',1440,900],['mobile',390,844]]){
-  const page=await browser.newPage({viewport:{width,height}});
-  const errors=[];
-  page.on('pageerror',err=>errors.push(err.stack||err.message));
-  page.on('console',msg=>{if(msg.type()==='error')errors.push('Console: '+msg.text())});
-  page.on('requestfailed',request=>errors.push('Request failed: '+request.url()+' '+request.failure()?.errorText));
-  await page.goto(process.env.UI_URL||'http://127.0.0.1:4173/',{waitUntil:'networkidle'});
+ for(const [name,slug,present,absent] of checks){
+  const page=await browser.newPage({viewport:{width:1440,height:900}});
+  const errors=[];page.on('pageerror',err=>errors.push(err.message));
+  const response=await page.goto(base+slug,{waitUntil:'networkidle'});
+  assert.equal(response?.status(),200,name+': mauvaise réponse HTTP');
+  await page.locator('#main').waitFor();
+  assert.equal(errors.length,0,name+': erreurs Javascript '+errors.join('; '));
+  for(const selector of present)assert.equal(await page.locator(selector).count(),1,name+': rubrique absente '+selector);
+  for(const selector of absent)assert.equal(await page.locator(selector).count(),0,name+': rubrique non masquée '+selector);
+  assert.equal(await page.locator('main h1').count(),1,name+': un seul titre principal requis');
+  assert.equal(await page.locator('nav#site-nav').count(),1,name+': une seule bannière de navigation');
+  assert.equal(await page.locator('#menu-toggle').count(),0,name+': aucun menu doublon');
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,name+': débordement horizontal');
+  assert.ok((await page.locator('#site-nav a').count())>=8,name+': navigation incomplète');
+  assert.ok(await page.locator('#site-nav a[aria-current="page"]').count()===1,name+': page active manquante');
+  if(name==='accueil'){
+   const order=await page.evaluate(()=>[...document.querySelectorAll('main>section')].map(x=>x.id).filter(Boolean));
+   assert.deepEqual(order.slice(0,3),['accueil','constellation','parcours'], 'Ordre accueil/constellation/parcours');
+   assert.equal(await page.locator('.constellation-node').count(),12);
+   assert.ok((await page.locator('body').evaluate(el=>el.scrollHeight))<3200,'Accueil trop long');
+   const shortcut=page.locator('.hero .actions a[href="#constellation"]');assert.equal(await shortcut.count(),1);
+   await shortcut.click();assert.equal(new URL(page.url()).hash,'#constellation');
+  }
+  if(name==='bibliotheque'){
+   assert.equal(await page.locator('.lotb-card').count(),24);
+   await page.locator('#lotb-search').fill('entretien');
+   assert.ok(await page.locator('.lotb-card').count()>0,'Filtre bibliothèque non fonctionnel');
+  }
+  if(name==='ressources'){
+   await page.locator('.resourcegrid .res').first().locator('summary').click();
+   assert.ok(await page.locator('.resourcegrid .res').first().locator('.res-action').isVisible());
+  }
+  if(name==='recherche'){
+   await page.locator('#portal-query').fill('revue');
+   assert.ok(await page.locator('.portal-result').count()>0);
+  }
   await page.screenshot({path:'screenshots/universia-'+name+'.png',fullPage:false});
-  const main=await page.locator('#main').count();
-  console.log(name, 'main',main,'errors',errors,'title',await page.title());
-  assert.equal(main,1,name+': contenu principal absent ; erreurs: '+errors.join(' | '));
-  for(const selector of ['#studio','#constellation','#bibliotheque','#recherche-globale','#portal-query','#portal-results','#lotb-search','#lotb-results','#site-nav','#u12-course-tabs','#u12-result']){
-    assert.equal(await page.locator(selector).count(),1,name+': élément manquant '+selector);
-  }
-  const sectionOrder=await page.evaluate(()=>[...document.querySelectorAll('#accueil,#constellation,#recherche-globale,#bibliotheque')].map(el=>el.id));
-  assert.deepEqual(sectionOrder,['accueil','constellation','recherche-globale','bibliotheque'],name+': la constellation doit être immédiatement après la page d’accueil');
-  const shortcut=page.locator('.hero .actions a[href="#constellation"]');
-  assert.equal(await shortcut.count(),1,name+': raccourci Constellation absent de l’accueil');
-  await shortcut.click();
-  assert.equal(new URL(page.url()).hash,'#constellation',name+': raccourci Constellation non fonctionnel');
-  await page.locator('#constellation').scrollIntoViewIfNeeded();
-  await page.screenshot({path:'screenshots/universia-'+name+'-constellation.png',fullPage:false});
-  assert.equal(await page.locator('#menu-toggle').count(),0,'Le menu déroulant doit être supprimé');
-  const nav=page.locator('#site-nav');
-  assert.ok(await nav.isVisible(),'La bannière doit rester visible');
-  for(const link of await nav.locator('a').all()){assert.ok(await link.isVisible(),'Tous les liens de la bannière doivent rester visibles');}
-  const horizontalOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>window.innerWidth+2);
-  assert.equal(horizontalOverflow,false,'Pas de débordement horizontal');
-  await page.locator('#portal-query').fill('revue');
-  assert.ok((await page.locator('.portal-result').count())>0,'Recherche globale : aucun résultat');
-  assert.equal(await page.locator('.constellation-node').count(),12,'Douze destinations de la constellation');
-  const scientific=page.locator('.constellation-node[data-node="recherche"]');
-  await scientific.click();
-  assert.equal(await page.locator('#lotb-category').inputValue(),'Recherche','Filtre scientifique à appliquer');
-  if(name==='desktop'){
-    await page.locator('.constellation-controls [data-view="list"]').click();
-    assert.equal(await page.locator('.constellation-stage').getAttribute('data-layout'),'list');
-  }
-  const card=page.locator('.resourcegrid .res').first();
-  await card.locator('summary').click();
-  assert.ok(await card.locator('.res-action').isVisible(),'Les fiches de ressources doivent être cliquables');
+  console.log(name,': OK');
+  await page.close();
+ }
+ for(const [name,slug] of [['accueil',''],['bibliotheque','bibliotheque/'],['outils','outils/'],['formations','formations/']]){
+  const page=await browser.newPage({viewport:{width:390,height:844}});
+  await page.goto(base+slug,{waitUntil:'networkidle'});
+  assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,name+' mobile : débordement');
+  for(const item of await page.locator('#site-nav a').all())assert.ok(await item.isVisible(),name+' mobile : lien caché');
+  await page.screenshot({path:'screenshots/universia-mobile-'+name+'.png',fullPage:false});
   await page.close();
  }
 }finally{await browser.close();}
