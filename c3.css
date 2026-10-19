@@ -1,0 +1,49 @@
+/* UNIVERS·IA C3 — parcours applicatifs intégrés aux rubriques. */
+.c3-heading h3{font-size:clamp(22px,2vw,31px);line-height:1.2;margin:7px 0 10px}
+.c3-heading p{line-height:1.6}
+.c3-tools{margin:22px 0 8px;padding:22px;background:#f2f9f7;border:1px solid #d2e8df;border-radius:14px;color:#17394a}
+.c3-tools #c3-tool-guide{max-width:1050px;line-height:1.62}
+.c3-tools #c3-tool-guide p{margin:12px 0}
+.c3-meta{color:#086c62;font-size:.87rem;font-weight:800}
+.c3-example{margin:13px 0;padding:13px 15px;background:#e8f5f0;border-left:4px solid #0c927c;border-radius:9px}
+.c3-example p{margin:7px 0 0}
+.c3-checks{list-style:none;padding:0;margin:11px 0;display:grid;gap:7px}
+.c3-checks li{padding:7px 8px 7px 34px;position:relative;border-radius:6px;background:#f6faf9}
+.c3-checks li::before{content:"✓";position:absolute;left:11px;top:7px;font-weight:900;color:#078273}
+.c3-note{font-size:.8rem;line-height:1.55;color:#5a7375}
+.c3-training{margin:34px 0 12px;padding-top:22px;border-top:1px solid #d8e7e3}
+.c3-training-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin-top:18px}
+.c3-training-card{border:1px solid #d6e5e2;border-radius:13px;background:#fff;min-width:0;overflow:hidden}
+.c3-training-card summary{cursor:pointer;display:grid;gap:8px;padding:17px;min-height:92px;line-height:1.4}
+.c3-training-card summary span{color:#0e796d;font-weight:800;font-size:.78rem}
+.c3-training-card summary strong{font-size:1rem}
+.c3-training-card summary small{font-size:.8rem;color:#517675;font-weight:700}
+.c3-training-content{padding:17px;border-top:1px solid #dde9e6;line-height:1.65}
+.c3-training-content h4{margin:13px 0 7px}
+.c3-training-content ol{padding-left:22px}
+.c3-training-content li{margin:6px 0}
+.c3-training-content p{margin:12px 0}
+.c3-case-detail{margin:14px 0 4px;border-top:1px solid #d9e8e4}
+.c3-case-detail summary{padding:12px 3px;min-height:44px;color:#096c62;font-weight:800;cursor:pointer}
+.c3-case-body{padding:3px 8px 13px;line-height:1.55}
+.c3-case-body h5{font-size:.91rem;margin:7px 0}
+.c3-case-body ol{padding-left:21px;margin:8px 0}
+.c3-case-body li{margin:6px 0}
+.c3-advanced{margin-top:14px;border:1px solid #d6e8e1;border-radius:10px;background:#f5fbf8}
+.c3-advanced summary{min-height:44px;padding:12px;color:#076a60;cursor:pointer;font-weight:800}
+.c3-advanced>div{padding:12px 15px;border-top:1px solid #d7e9e2;line-height:1.6}
+.c3-advanced h4{margin:10px 0}
+.c3-ethics{padding-top:34px;padding-bottom:48px;border-top:1px solid #c3f8ef2a}
+.c3-ethics .c3-heading h3{color:#f4fffd}
+.c3-ethics .c3-heading p{color:#d4ebe7}
+.c3-ethics-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:21px}
+.c3-ethics-card{border:1px solid #8edacc69;border-radius:12px;background:#f5fffc;color:#133a41;overflow:hidden}
+.c3-ethics-card summary{padding:18px;min-height:80px;display:grid;gap:7px;cursor:pointer}
+.c3-ethics-card summary strong{font-size:1.05rem}
+.c3-ethics-card summary span{font-size:.8rem;color:#187267;font-weight:800}
+.c3-ethics-card>div{padding:15px 18px;border-top:1px solid #c6e0d7;line-height:1.62}
+.c3-ethics-card h4{margin:10px 0}
+.c3-warning{border-left:3px solid #af674d;background:#fff4ee;padding:10px;border-radius:4px}
+.c3-ethics-footer{color:#d5eeea;font-size:.85rem;line-height:1.8;margin-top:20px}
+.c3-ethics-footer a{color:#b0f4e8;text-decoration:underline;text-underline-offset:3px}
+@media(max-width:760px){.c3-training-grid,.c3-ethics-grid{grid-template-columns:1fr}.c3-tools{padding:14px}.c3-training-card summary{min-height:65px}}

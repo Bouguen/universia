@@ -1,3 +1,4 @@
+import {mountC3} from './c3-ui.js';
 import {pageUrl} from './multi-routes.js';
 import {resourceApplications} from './resource-applications.js';
 import {applyMultipage} from './multi-page.js';
@@ -30,4 +31,5 @@ mountV1();
 const v11Root=document.createElement("div");v11Root.id="universia-v11";document.querySelector("#univ-v1")?.after(v11Root);mountV11();
 
 const v12Root=document.createElement("div");v12Root.id="universia-v12";document.querySelector("#universia-v11")?.after(v12Root);mountV12();
+mountC3();
 applyMultipage();
