@@ -33,8 +33,17 @@ try{
   assert.ok(await page.locator('#site-nav a[aria-current="page"]').count()===1,name+': page active manquante');
   if(name==='accueil'){
    const order=await page.evaluate(()=>[...document.querySelectorAll('main>section')].map(x=>x.id).filter(Boolean));
-   assert.deepEqual(order.slice(0,3),['accueil','constellation','parcours'], 'Ordre accueil/constellation/parcours');
+   assert.deepEqual(order.slice(0,2),['accueil','parcours'], 'Accueil allégé sans section constellation répétée');
+   assert.equal(await page.locator('#accueil #constellation').count(),1,'La constellation est dans le héros');
+   assert.equal(await page.locator('.hero-art').count(),0,'Ancienne illustration U supprimée');
    assert.equal(await page.locator('.constellation-node').count(),12);
+   const headerRect=await page.locator('.head').boundingBox();
+   const eyebrowRect=await page.locator('.hero .eyebrow').boundingBox();
+   assert.ok(headerRect&&eyebrowRect&&eyebrowRect.y>=headerRect.y+headerRect.height-2,'La bannière ne doit pas chevaucher le titre');
+   const heroTitle=await page.locator('.hero h1').boundingBox();
+   const galaxy=await page.locator('#constellation').boundingBox();
+   assert.ok(galaxy&&heroTitle&&galaxy.x>heroTitle.x+heroTitle.width/2,'La constellation doit être à droite du titre');
+   await page.screenshot({path:'screenshots/universia-accueil-constellation.png',fullPage:false});
    assert.ok((await page.locator('body').evaluate(el=>el.scrollHeight))<3200,'Accueil trop long');
    const shortcut=page.locator('.hero .actions a[href="#constellation"]');assert.equal(await shortcut.count(),1);
    await shortcut.click();assert.equal(new URL(page.url()).hash,'#constellation');
@@ -60,6 +69,10 @@ try{
   const page=await browser.newPage({viewport:{width:390,height:844}});
   await page.goto(base+slug,{waitUntil:'networkidle'});
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+2),false,name+' mobile : débordement');
+  if(name==='accueil'){
+    assert.equal(await page.locator('#accueil #constellation').count(),1,'Constellation visible dans le hero mobile');
+    assert.ok(await page.locator('#constellation').isVisible(),'La constellation doit rester visible sur mobile');
+  }
   for(const item of await page.locator('#site-nav a').all())assert.ok(await item.isVisible(),name+' mobile : lien caché');
   await page.screenshot({path:'screenshots/universia-mobile-'+name+'.png',fullPage:false});
   await page.close();
