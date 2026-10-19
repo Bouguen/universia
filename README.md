@@ -17,12 +17,19 @@ L'accueil est volontairement allégé : présentation, **constellation interacti
 | `/formations/` | Formations, ateliers et parcours avancés |
 | `/cas-pratiques/` | Exemples disciplinaires |
 | `/integrite/` | Responsabilité, protection des données et références |
+| `/skills/` | 32 Agent Skills académiques et atelier de création SKILL.md |
 
 **Déploiement** : Vite produit neuf fichiers HTML indépendants, et le module `multi-routes.js` génère des liens compatibles avec le domaine racine de Vercel ainsi qu'avec la base `/universia/` de GitHub Pages. Les liens de la constellation mènent aux pages et appliquent des filtres thématiques quand nécessaire.
 
 **Validations** : `npm test`, construction GitHub Pages `npm run build`, construction Vercel `VERCEL=1 npm run build` et tests navigateur sur les neuf pages des deux bases, ainsi que des contrôles mobiles. Les données de progression, les favoris et les prompts restent locaux au navigateur.
 
 **Statut** : version en prévisualisation, à ne pas fusionner ni publier sans validation de l'utilisateur. SCOLAR·IA est indépendant et inchangé.
+
+## Extension Skills IA (20 octobre 2026)
+
+La rubrique `/skills/` propose 32 workflows originaux sans code exécutable, répartis en huit catégories (enseignement, évaluation, recherche, publication, données, développement, gouvernance, éthique). Recherche et filtres locaux, fiches complètes, contrôles qualité, téléchargement d’un fichier `SKILL.md` au format Agent Skills et atelier de génération personnalisé. Les fiches sont indexées dans la recherche transversale.
+
+**Sécurité :** pas d’installations automatiques, ni de scripts ni d’accès réseau liés aux skills ; relire le Markdown et vérifier les conditions d’installation et les permissions de l’agent cible. L’utilisateur reste responsable de la validation scientifique.
 
 ## Fonctionnalités disponibles
 
