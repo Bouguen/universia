@@ -169,7 +169,7 @@ body[data-page="accueil"] .hero h1{
 }
 .constellation-stage[data-layout="list"] .constellation-node:hover,.constellation-stage[data-layout="list"] .constellation-node:focus-visible{transform:none;background:#83d8c520}
 .constellation-stage[data-layout="list"] .constellation-name{max-width:none}
-@media(max-width:1080px){
+@media(max-width:900px){
   body[data-page="accueil"] .hero-grid{grid-template-columns:1fr;gap:22px}
   .hero-constellation{width:100%;max-width:740px;margin:auto}
   .constellation-stage{height:420px;min-height:420px}
@@ -197,3 +197,5 @@ body[data-page="accueil"] .hero h1{
   .constellation-controls{display:none}
 }
 @media(prefers-reduced-motion:reduce){.constellation-node{transition:none!important}}
+
+@media(min-width:901px) and (max-width:1100px){body[data-page="accueil"] .hero-grid{grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:20px}body[data-page="accueil"] .hero h1{font-size:clamp(37px,4.2vw,46px)}.constellation-node{font-size:10px}.constellation-name{max-width:95px}}
