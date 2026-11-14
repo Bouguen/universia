@@ -29,7 +29,7 @@ export function mountEncyclopedia(){
   results.innerHTML=items.length?items.map(markup).join(''):'<p>Aucune notice pour ces critères. Essayez un autre terme.</p>';
  }
  query.addEventListener('input',render);category.addEventListener('change',render);
- section.addEventListener('click',event=>{
+ parent.addEventListener('click',event=>{
   const button=event.target.closest('button[data-encyclopedia-target]');if(!button)return;
   const id=button.dataset.encyclopediaTarget;
   // Reset filters so the destination card always exists.
