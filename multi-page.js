@@ -88,5 +88,5 @@ export function applyMultipage(){
   const a=event.target.closest('a[href^="#"]');if(!a)return;
   linkFor(a,page);
  });
- document.querySelector('footer .footergrid>span')?.replaceChildren(document.createTextNode('VERSION V1.3 · MULTIPAGE · 2026'));
+ // Preserve the image signature and year already rendered in the shared footer.
 }
