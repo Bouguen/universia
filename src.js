@@ -1,3 +1,4 @@
+import {mountPortalHome} from './portal-home.js';
 import {mountAcademy} from './academy-ui.js';
 import {mountC3} from './c3-ui.js';
 import {pageUrl} from './multi-routes.js';
@@ -35,3 +36,4 @@ const v12Root=document.createElement("div");v12Root.id="universia-v12";document.
 applyMultipage();
 mountAcademy();
 mountC3();
+mountPortalHome();
