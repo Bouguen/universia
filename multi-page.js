@@ -64,6 +64,17 @@ export function applyMultipage(){
   main.prepend(intro);
  }
  for(const a of document.querySelectorAll('a[href^="#"]'))linkFor(a,page);
+ // Delegated routing also covers cards rebuilt after changing search or category filters.
+ main.addEventListener('click',event=>{
+  const a=event.target.closest('a[href^="#"]');
+  if(!a||!main.contains(a))return;
+  const hash=a.getAttribute('href');
+  if(!hash||hash==='#')return;
+  const target=hash.slice(1);
+  if(document.getElementById(target))return;
+  event.preventDefault();
+  window.location.assign(destinationForHash(hash,a.dataset.params||''));
+ });
  if(page==='ressources'){
   const theme=new URLSearchParams(window.location.search).get('theme');
   const filter=document.querySelector('#ressources [data-filter="'+CSS.escape(theme||'')+'"]');
