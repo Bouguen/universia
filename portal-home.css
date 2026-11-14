@@ -1,0 +1,42 @@
+/* UNIVERS·IA 2.0: home-only layer. Historical sections and routes stay intact. */
+body[data-page="accueil"] .v2-home{background:#071426;color:#eef5ff;overflow:hidden}
+.v2-splash{position:relative;isolation:isolate;padding:clamp(56px,7vw,102px) 0 66px;background:radial-gradient(ellipse at 50% 6%,#24456b 0%,#0b1d35 47%,#06101d 90%)}
+.v2-cosmos{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background-image:radial-gradient(#c5dcff70 1px,transparent 1px);background-size:63px 63px;mask-image:linear-gradient(to bottom,#000 10%,transparent 92%)}
+.v2-orbit{position:absolute;left:50%;top:10%;border:1px solid #8abaff20;border-radius:50%;transform:translateX(-50%) rotate(-23deg)}
+.v2-orbit-one{width:760px;height:300px}.v2-orbit-two{width:1050px;height:440px;top:0}
+.v2-light{position:absolute;left:50%;top:3%;width:520px;height:300px;transform:translateX(-50%);background:radial-gradient(ellipse,#2f83d126,transparent 70%)}
+.v2-splash-content{text-align:center;position:relative}
+.v2-eyebrow{font-size:.72rem!important;letter-spacing:.17em;font-weight:800;color:#8dceff!important;text-transform:uppercase}
+.v2-signal{display:inline-block;width:7px;height:7px;background:#5ae0c7;border-radius:50%;box-shadow:0 0 13px #5ae0c7;vertical-align:middle;margin-right:8px}
+.v2-splash h1{color:#fff;font-size:clamp(2.15rem,5.3vw,4.55rem);line-height:1.09;max-width:900px;margin:17px auto 20px;letter-spacing:-.045em}
+.v2-splash h1 em{font-style:normal;background:linear-gradient(110deg,#85c8ff,#c2e5ff,#71d9c4);-webkit-background-clip:text;background-clip:text;color:transparent}
+.v2-lead{font-size:clamp(1rem,1.5vw,1.17rem);line-height:1.75;max-width:740px;margin:0 auto 43px;color:#c2d3e8}
+.v2-portals{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;text-align:left}
+.v2-portal{--accent:#64aeff;position:relative;display:flex;flex-direction:column;min-height:390px;padding:27px 25px;text-decoration:none;color:#fff!important;background:linear-gradient(148deg,#17345be8,#10223de8 52%,#0b1b31);border:1px solid color-mix(in srgb,var(--accent) 38%,#fff 5%);border-radius:20px;box-shadow:0 18px 38px #02081455;transition:transform .25s,border-color .25s,box-shadow .25s;overflow:hidden}
+.v2-portal::before{content:"";position:absolute;width:230px;height:230px;right:-85px;top:-70px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 24%,transparent),transparent 70%);pointer-events:none}
+.v2-reference{--accent:#e7b65c;background:linear-gradient(148deg,#43341f,#272536 55%,#161a2b)}
+.v2-lab{--accent:#53dcc3;background:linear-gradient(148deg,#12473f,#10333e 55%,#0c2032)}
+.v2-portal:hover,.v2-portal:focus-visible{transform:translateY(-8px);border-color:var(--accent);box-shadow:0 25px 55px #0008,0 0 22px color-mix(in srgb,var(--accent) 20%,transparent)}
+.v2-portal:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.v2-portal-icon{display:grid;place-items:center;width:60px;height:60px;border:1px solid var(--accent);border-radius:17px;font-size:2rem;color:var(--accent);background:#ffffff0b;margin-bottom:20px}
+.v2-portal-no{font-size:.72rem;letter-spacing:.15em;color:var(--accent);font-weight:800}
+.v2-portal-title{font-size:clamp(1.35rem,2.5vw,2.03rem);line-height:1.18;letter-spacing:-.025em;font-weight:800;margin:12px 0 13px}
+.v2-portal-desc{color:#c6d6e8;line-height:1.65;font-size:.95rem}
+.v2-portal-link{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #ffffff26;padding-top:19px;margin-top:auto;font-size:.94rem;font-weight:800;color:var(--accent)}
+.v2-undertext{margin:28px 0 0;color:#90a7c4;font-size:.88rem}
+.v2-continuity{display:flex;justify-content:space-between;align-items:center;gap:36px;padding-top:62px;padding-bottom:26px}
+.v2-continuity h2{color:#fff;font-size:clamp(1.7rem,3vw,2.5rem);margin:9px 0}
+.v2-continuity p:not(.v2-eyebrow){color:#a6c1d8;line-height:1.7;max-width:600px}
+.v2-shortcuts{display:grid;grid-template-columns:repeat(2,minmax(135px,1fr));gap:10px;min-width:320px}
+.v2-shortcuts a{padding:12px;border-radius:10px;border:1px solid #6389ad63;color:#d4eaff;text-decoration:none;font-size:.88rem;background:#ffffff07}
+.v2-shortcuts a:hover,.v2-shortcuts a:focus-visible{border-color:#8ed0ff;background:#ffffff12}
+.v2-legacy{padding-bottom:75px}
+.v2-legacy details{border:1px solid #5784a452;border-radius:15px;margin-top:12px;background:#0c2137;color:#e6f4ff}
+.v2-legacy summary{cursor:pointer;padding:18px 24px;font-weight:750}
+.v2-legacy summary:focus-visible{outline:2px solid #80cfff;outline-offset:3px}
+.v2-legacy #constellation{margin:12px}
+.v2-legacy #parcours{color:#203248;background:#eaf3fa;border-radius:10px;padding:24px}
+.v2-legacy #parcours h2{color:#132f47}
+@media(max-width:860px){.v2-portals{grid-template-columns:1fr}.v2-portal{min-height:300px}.v2-continuity{flex-direction:column;align-items:stretch}.v2-shortcuts{min-width:0}}
+@media(max-width:520px){.v2-splash{padding-top:38px}.v2-portal{padding:22px;min-height:290px}.v2-shortcuts{grid-template-columns:1fr}.v2-eyebrow{font-size:.6rem!important}}
+@media(prefers-reduced-motion:reduce){.v2-portal{transition:none}.v2-portal:hover,.v2-portal:focus-visible{transform:none}}
