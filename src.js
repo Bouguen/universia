@@ -1,3 +1,4 @@
+import {mountEncyclopedia} from './encyclopedia-ui.js';
 import {mountAcademy} from './academy-ui.js';
 import {mountC3} from './c3-ui.js';
 import {pageUrl,destinationForHash} from './multi-routes.js';
@@ -29,6 +30,7 @@ initNavigation(document);
 mountConstellation();
 mountPortalSearch();
 mountLotB();
+mountEncyclopedia();
 mountV1();
 const v11Root=document.createElement("div");v11Root.id="universia-v11";document.querySelector("#univ-v1")?.after(v11Root);mountV11();
 
