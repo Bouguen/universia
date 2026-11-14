@@ -6,6 +6,6 @@
 /* UNIVERS·IA V1.1 — ateliers complémentaires */
 .v11-layout{display:grid;grid-template-columns:minmax(220px,0.82fr) minmax(0,1.6fr);gap:24px;margin-top:24px}.v11-index{display:flex;flex-direction:column;gap:10px}.v11-lesson{display:flex;flex-direction:column;gap:10px;text-align:left;padding:20px;border:1px solid #d9e2e8;border-radius:12px;background:#fff;color:#173448;cursor:pointer}.v11-lesson span,.v11-lesson small{font-size:.78rem;color:#607381}.v11-lesson strong{font-size:1rem}.v11-lesson.is-selected{border:2px solid #1d7c86;background:#eef8f7}.v11-detail{padding:26px;background:#f6f9fa;border:1px solid #dde5e9;border-radius:16px}.v11-detail h3{font-size:1.55rem;margin:8px 0 20px}.v11-detail h4{margin:22px 0 12px}.v11-detail li{margin-bottom:8px}.v11-steps{display:grid;gap:10px}.v11-step{display:flex;gap:13px;align-items:start;background:white;border:1px solid #dce5e8;border-radius:9px;padding:15px}.v11-step input{margin-top:4px;accent-color:#147884}.v11-step span{display:grid;gap:6px}.v11-step small{font-size:.9rem;line-height:1.5}.v11-warning{border-left:3px solid #bf7b33;padding:12px;background:#fff7ea}.v11-local{font-size:.8rem;color:#5f7380}@media(max-width:760px){.v11-layout{grid-template-columns:1fr}.v11-detail{padding:18px}}
 
-/* Signature discrète placée immédiatement avant l'année du pied de page. */
+/* Signature replacing the version label, inline before the year. */
 footer .footergrid>.footer-year{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
-footer .footer-signature{display:block;width:78px;max-width:22vw;height:auto;object-fit:contain;flex:none}
+footer .footer-version-signature{display:block;width:118px;max-width:32vw;height:auto;opacity:.9;object-fit:contain;flex:0 0 auto}
