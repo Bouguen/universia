@@ -24,3 +24,10 @@
 .encyclopedia-disclaimer{font-size:.82rem;color:#5a6e79;line-height:1.65;margin-top:17px}
 @media(max-width:760px){.encyclopedia-results{grid-template-columns:1fr}.encyclopedia-card[open]{grid-column:span 1}}
 @media(prefers-reduced-motion:reduce){.encyclopedia-card{scroll-behavior:auto}}
+
+/* Enrichment of existing methodological and resource cards. */
+.resource-enhancement,.lotb-extended{border-top:1px solid #c9dfe1;margin-top:19px;padding:18px 0 0;line-height:1.65}
+.resource-enhancement h4,.lotb-extended h4{font-size:1rem;margin:12px 0 4px;color:#164f5e}
+.resource-enhancement ul,.lotb-extended ol{padding-left:22px}
+.lotb-knowledge-link{background:#e2f5f0;color:#075a5e;border:1px solid #9ccdc5;border-radius:9px;padding:10px 13px;font:inherit;font-weight:700;cursor:pointer}
+.lotb-knowledge-link:hover,.lotb-knowledge-link:focus-visible{background:#c6e8e2;outline:2px solid #24817e}
