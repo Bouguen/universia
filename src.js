@@ -1,5 +1,4 @@
 import {mountHeroClouds} from './hero-clouds.js';
-import './hero-clouds.css';
 import {mountAcademy} from './academy-ui.js';
 import {mountC3} from './c3-ui.js';
 import {pageUrl} from './multi-routes.js';
@@ -13,6 +12,7 @@ import {navigationMarkup,initNavigation} from './navigation.js';
 import {mountV12} from './v12-ui.js';
 import {mountV11} from './v11-ui.js';
 import './style.css';
+import './hero-clouds.css';
 import {mountV1} from './v1-ui.js';
 import {themes,resources,prompts,sources} from './data.js';
 const app=document.querySelector('#app');
