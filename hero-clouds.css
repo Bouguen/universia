@@ -1,7 +1,8 @@
-/* UNIVERS·IA atmospheric interactive cloud layer */
-.hero{position:relative;isolation:isolate;background:linear-gradient(125deg,#f5faf8 0%,#eaf6f5 56%,#eef7fd 100%)}
-.hero .universia-clouds{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.95}
+/* Atmospheric interactive clouds: a visible, responsive layer behind UNIVERS·IA content. */
+.hero{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(125deg,#e8fbf5 0%,#c7f1ef 47%,#d5eafa 100%)}
+.hero::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(250,255,252,.80) 0%,rgba(248,255,254,.37) 48%,transparent 85%)}
+.hero .universia-clouds{position:absolute;inset:0;display:block;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1}
 .hero>.shell{position:relative;z-index:1}
 .hero .hero-art{position:relative;z-index:1}
-@media(max-width:760px){.hero .universia-clouds{opacity:.68}}
-@media(prefers-reduced-motion:reduce){.hero .universia-clouds{opacity:.55}}
+@media(max-width:760px){.hero{background:linear-gradient(145deg,#dbf8f0,#c6eaf4)}.hero .universia-clouds{opacity:.9}.hero::after{background:rgba(250,255,253,.40)}}
+@media(prefers-reduced-motion:reduce){.hero .universia-clouds{opacity:.85}}
