@@ -7,19 +7,19 @@ export function mountHeroClouds() {
  const ctx=canvas.getContext('2d',{alpha:true});if(!ctx)return;
  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
  const clouds=[
- [.77,.17,.36,.23,.17,170,.43,0],
- [.92,.58,.40,.28,.23,204,.40,1.9],
- [.42,.90,.48,.22,.12,178,.27,3],
- [.08,.14,.32,.20,.11,194,.17,2.7],
- [.63,.43,.27,.18,.28,160,.28,4.2]
+ [.77,.17,.36,.29,.17,175,.87,0],
+ [.92,.58,.40,.32,.23,204,.78,1.9],
+ [.42,.90,.48,.32,.12,178,.73,3],
+ [.08,.14,.32,.30,.11,194,.67,2.7],
+ [.63,.43,.27,.26,.28,160,.79,4.2]
  ];
  let w=0,h=0,raf=0,visible=true,px=0,py=0,tx=0,ty=0;
  function puff(x,y,rx,ry,hue,a){
    ctx.save();ctx.translate(x,y);ctx.scale(rx,ry);
    const g=ctx.createRadialGradient(0,0,.08,0,0,1);
-   g.addColorStop(0,`hsla(${hue},80%,98%,${a})`);
-   g.addColorStop(.35,`hsla(${hue},70%,91%,${a*.76})`);
-   g.addColorStop(.68,`hsla(${hue},75%,85%,${a*.29})`);
+   g.addColorStop(0,`hsla(${hue},89%,86%,${a*.86})`);
+   g.addColorStop(.35,`hsla(${hue},84%,73%,${a*.58})`);
+   g.addColorStop(.68,`hsla(${hue},78%,76%,${a*.25})`);
    g.addColorStop(1,`hsla(${hue},75%,85%,0)`);
    ctx.fillStyle=g;ctx.beginPath();ctx.arc(0,0,1,0,Math.PI*2);ctx.fill();ctx.restore();
  }
