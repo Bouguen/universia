@@ -1,3 +1,5 @@
+import {mountHeroClouds} from './hero-clouds.js';
+import './hero-clouds.css';
 import {mountAcademy} from './academy-ui.js';
 import {mountC3} from './c3-ui.js';
 import {pageUrl} from './multi-routes.js';
@@ -24,6 +26,7 @@ function updatePrompt(){const template=prompts.find(p=>p.id===document.querySele
 function attach(){document.querySelectorAll('[data-group]').forEach(a=>a.addEventListener('click',()=>{selectedGroup=a.dataset.group;drawResources();syncChips()}));document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{selectedGroup=b.dataset.filter;drawResources();syncChips()}));document.querySelector('#search').addEventListener('input',e=>{search=e.target.value;drawResources()});document.querySelector('#favfilter').addEventListener('click',()=>{filterFav=!filterFav;document.querySelector('#favfilter').classList.toggle('active',filterFav);document.querySelector('#favfilter').setAttribute('aria-pressed',filterFav);drawResources()});document.querySelector('#generate').addEventListener('click',updatePrompt);document.querySelector('#copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(document.querySelector('#promptOutput').textContent);document.querySelector('#copy').textContent='Copié ✓';setTimeout(()=>document.querySelector('#copy').textContent='Copier ↗',1800)}catch{document.querySelector('#promptOutput').focus()}})}
 function syncChips(){document.querySelectorAll('[data-filter]').forEach(b=>b.classList.toggle('on',b.dataset.filter===selectedGroup))}
 render();
+mountHeroClouds();
 initNavigation(document);
 mountConstellation();
 mountPortalSearch();
