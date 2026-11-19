@@ -33,7 +33,7 @@ jobs:
           grep -q '/universia/assets/' dist/index.html
       - name: Verify all GitHub Pages entry points
         run: |
-          for p in bibliotheque ressources recherche outils prompts formations cas-pratiques integrite; do
+          for p in bibliotheque ressources recherche outils prompts formations cas-pratiques integrite skills; do
             test -s "dist/$p/index.html"
             grep -q '/universia/assets/' "dist/$p/index.html"
           done
@@ -60,7 +60,7 @@ jobs:
           fi
       - name: Verify all Vercel entry points
         run: |
-          for p in bibliotheque ressources recherche outils prompts formations cas-pratiques integrite; do
+          for p in bibliotheque ressources recherche outils prompts formations cas-pratiques integrite skills; do
             test -s "dist/$p/index.html"
             grep -q '/assets/' "dist/$p/index.html"
           done

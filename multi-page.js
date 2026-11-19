@@ -7,7 +7,7 @@ const activeSections={
  bibliotheque:['bibliotheque'],ressources:['ressources'],recherche:['recherche-globale'],
  outils:['univ-v1','universia-v12'],prompts:['atelier','univ-v1'],
  formations:['univ-v1','universia-v11','universia-v12'],cas:['universia-v12'],
- integrite:['reperes']
+ integrite:['reperes'],skills:['universia-skills']
 };
 const widgetSections={
  outils:{'univ-v1':['outils'],'universia-v12':['studio']},

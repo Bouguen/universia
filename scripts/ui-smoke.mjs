@@ -13,7 +13,8 @@ const checks=[
  ['prompts','prompts/',['#atelier','#promptotheque','#generate','#v1-catalog'],['#studio','#formations']],
  ['formations','formations/',['#formations','#modules','#formations-approfondies'],['#studio','#atelier']],
  ['cas','cas-pratiques/',['#cas-academiques','#u12-cases'],['#studio','#formations-approfondies']],
- ['integrite','integrite/',['#reperes','.sources'],['#studio','#atelier']]
+ ['integrite','integrite/',['#reperes','.sources'],['#studio','#atelier']],
+ ['skills','skills/',['#skills','#skills-grid','#skills-atelier','#skills-form'],['#studio','#promptotheque']]
 ];
 try{
  for(const [name,slug,present,absent] of checks){
@@ -86,6 +87,26 @@ try{
    const values=await page.locator('#u12-fieldset input').evaluateAll(inputs=>inputs.map(input=>input.value));
    assert.ok(values.some(v=>v.includes(title)),'Sujet du cas prérempli dans le Studio');
    assert.ok((await page.locator('#u12-notes').inputValue()).includes('CAS D’USAGE FICTIF'),'Contexte du cas transféré au Studio');
+  }
+  if(name==='skills'){
+   assert.equal(await page.locator('.sk-card').count(),32,'32 skills disponibles');
+   await page.locator('#skills-category').selectOption('recherche');
+   assert.equal(await page.locator('.sk-card').count(),4,'Quatre skills de recherche');
+   await page.locator('#skills-query').fill('revue');
+   assert.ok(await page.locator('.sk-card').count()>0,'Filtre textuel fonctionnel');
+   await page.locator('#skills-category').selectOption('toutes');
+   await page.locator('#skills-query').fill('');
+   await page.locator('.sk-card a').first().click();
+   await page.waitForURL(url=>url.pathname.endsWith('/skills/')&&url.searchParams.has('skill'));
+   assert.equal(await page.locator('#skills-detail').count(),1,'Fiche dédiée visible');
+   assert.match(await page.locator('#skills-markdown').textContent(),/^---\nname: /);
+   await page.locator('#sk-title').fill('Réviser un mémoire');
+   await page.locator('#sk-description').fill('Utiliser pour examiner un manuscrit académique sans inventer de sources.');
+   await page.locator('#sk-steps').fill('Recueillir le manuscrit\nVérifier la cohérence\nPréparer des suggestions');
+   await page.locator('#sk-deliverable').fill('Rapport de révision');
+   await page.locator('#skills-form button[type="submit"]').click();
+   assert.equal(await page.locator('#sk-download').isEnabled(),true,'Export débloqué après validation');
+   assert.match(await page.locator('#sk-preview').textContent(),/name: reviser-un-memoire/);
   }
   if(name==='bibliotheque'){
    assert.equal(await page.locator('.lotb-card').count(),24);
